@@ -1,0 +1,7 @@
+tmp
+vendor
+log
+documentation
+node_modules
+public
+.env
