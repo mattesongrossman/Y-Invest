@@ -11,7 +11,7 @@ import Dashboard from "views/Dashboard/Dashboard.jsx"
 // import ValidationForms from "views/Forms/ValidationForms.jsx"
 // import Wizard from "views/Forms/Wizard.jsx"
 // import RegularTables from "views/Tables/RegularTables.jsx"
-// import ExtendedTables from "views/Tables/ExtendedTables.jsx"
+import ExtendedTables from "views/Tables/ExtendedTables.jsx"
 import ReactTables from "views/Tables/ReactTables.jsx"
 // import GoogleMaps from "views/Maps/GoogleMaps.jsx"
 // import FullScreenMap from "views/Maps/FullScreenMap.jsx"
@@ -127,7 +127,18 @@ var dashRoutes = [
     icon: GridOn,
     component: ReactTables
   },
-  { path: "/charts", name: "Portfolio", icon: Timeline, component: Charts },
+  {
+    path: "/portfolio",
+    name: "Portfolio",
+    icon: Timeline,
+    component: ExtendedTables
+  },
+  {
+    path: "/charts",
+    name: "Charts",
+    icon: Timeline,
+    component: Charts
+  },
   { redirect: true, path: "/", pathTo: "/dashboard", name: "Dashboard" }
 ]
 export default dashRoutes

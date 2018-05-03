@@ -29,6 +29,11 @@ const api = {
     return fetch("https://api.coinmarketcap.com/v1/ticker/").then(response =>
       response.json()
     )
+  },
+  getStocks() {
+    return fetch(
+      "https://api.iextrading.com/1.0/stock/market/list/iexvolume"
+    ).then(response => response.json())
   }
 }
 
