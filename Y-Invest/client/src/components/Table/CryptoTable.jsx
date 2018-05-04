@@ -13,7 +13,7 @@ import IconCard from "components/Cards/IconCard.jsx"
 // import IconButton from "components/CustomButtons/IconButton.jsx"
 import Button from "material-ui/Button"
 import portfolio from "components/CustomInput/PortfolioActions.jsx"
-import { Redirect } from 'react-router'
+import { Redirect } from "react-router"
 
 import api from "../../Api"
 import TextField from "material-ui/TextField"
@@ -78,39 +78,39 @@ class CryptoTable extends React.Component {
     }
     return {}
   }
-//handles input change on TextField
-handleChange(evt) {
-  let val = evt.target.value
-  let input = evt.target.name
-  this.setState({
-    [input]: val
-  })
-}
-//creates portfolio
-addPortfolioItem(evt) {
-  evt.preventDefault()
-  const { investment_name, quantity, purchase_date, price, date } = this.state
-  console.log("test")
-  const body = {
-    investment_name: investment_name,
-    quantity: quantity,
-    purchase_date: purchase_date,
-    price: price,
-    date: date,
-    redirect: true
-  }
-  api.addPortfolioItem(body).then(response => {
+  //handles input change on TextField
+  handleChange(evt) {
+    let val = evt.target.value
+    let input = evt.target.name
     this.setState({
-      createdPortfolio: true
+      [input]: val
     })
-  })
-}
-
-renderRedirect = () => {
-  if (this.state.redirect) {
-    return <Redirect to='/portfolios'/>
   }
-}
+  //creates portfolio
+  addPortfolioItem(evt) {
+    evt.preventDefault()
+    const { investment_name, quantity, purchase_date, price, date } = this.state
+    console.log("test")
+    const body = {
+      investment_name: investment_name,
+      quantity: quantity,
+      purchase_date: purchase_date,
+      price: price,
+      date: date,
+      redirect: true
+    }
+    api.addPortfolioItem(body).then(response => {
+      this.setState({
+        createdPortfolio: true
+      })
+    })
+  }
+
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to="/portfolios" />
+    }
+  }
 
   render() {
     console.log(this.state.crypto)
@@ -124,7 +124,7 @@ renderRedirect = () => {
               <ReactTable
                 data={this.state.crypto.map((prop, key) => {
                   return {
-                    // id: key,
+                    id: prop[0],
                     symbol: prop[2],
                     name: prop[1],
                     price: `$ ` + prop[4],
@@ -151,42 +151,43 @@ renderRedirect = () => {
                               Add Investment
                             </DialogContentText>
                             <form id="addItem" onSubmit={this.addPortfolioItem}>
-                            <TextField
-                              onChange={this.handleChange}
-                              autoFocus
-                              name="investment_name"
-                              id="investment"
-                              label="Investment Name"
-                              // value=""
-                              type="text"
-                              fullWidth
-                            />
-                            <TextField
-                              onChange={this.handleChange}
-                              autoFocus
-                              name="quantity"
-                              id="quantity"
-                              label="Quantity"
-                              type="number"
-                            />
-                            <br />
-                            <TextField
-                              onChange={this.handleChange}
-                              name="price"
-                              autoFocus
-                              id="price"
-                              label="Price"
-                              type="number"
-                            />
-                            <br />
-                            <br />
-                            <TextField
-                              onChange={this.handleChange}
-                              name="purchase_date"
-                              autoFocus
-                              id="date"
-                              type="date" />
-                              </form>
+                              <TextField
+                                onChange={this.handleChange}
+                                autoFocus
+                                name="investment_name"
+                                id="investment"
+                                label="Investment Name"
+                                // value=""
+                                type="text"
+                                fullWidth
+                              />
+                              <TextField
+                                onChange={this.handleChange}
+                                autoFocus
+                                name="quantity"
+                                id="quantity"
+                                label="Quantity"
+                                type="number"
+                              />
+                              <br />
+                              <TextField
+                                onChange={this.handleChange}
+                                name="price"
+                                autoFocus
+                                id="price"
+                                label="Price"
+                                type="number"
+                              />
+                              <br />
+                              <br />
+                              <TextField
+                                onChange={this.handleChange}
+                                name="purchase_date"
+                                autoFocus
+                                id="date"
+                                type="date"
+                              />
+                            </form>
                           </DialogContent>
                           <DialogActions>
                             <Button

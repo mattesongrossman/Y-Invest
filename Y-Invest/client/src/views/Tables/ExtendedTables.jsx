@@ -67,46 +67,36 @@ class ExtendedTables extends React.Component {
     })
   }
 
+  handleDestroy(evt) {
+    console.log(evt.target.value)
+  }
+
   render() {
     const { classes } = this.props
     const { portfolio } = this.state
     console.log(portfolio)
     const fillButtons = [
-      { color: "info", icon: Person },
-      { color: "success", icon: Edit },
-      { color: "danger", icon: Close }
+      // { color: "info", icon: Person },
+      { color: "success", icon: Edit, onClick: this.handleEdit },
+      {
+        color: "danger",
+        icon: Close,
+        onClick: this.handleDestroy,
+        accessor: "id"
+      }
     ].map((prop, key) => {
       return (
-        <Button color={prop.color} customClass={classes.actionButton} key={key}>
-          <prop.icon className={classes.icon} />
-        </Button>
-      )
-    })
-    const simpleButtons = [
-      { color: "infoNoBackground", icon: Person },
-      { color: "successNoBackground", icon: Edit },
-      { color: "dangerNoBackground", icon: Close }
-    ].map((prop, key) => {
-      return (
-        <Button color={prop.color} customClass={classes.actionButton} key={key}>
-          <prop.icon className={classes.icon} />
-        </Button>
-      )
-    })
-    const roundButtons = [
-      { color: "info", icon: Person },
-      { color: "success", icon: Edit },
-      { color: "danger", icon: Close }
-    ].map((prop, key) => {
-      return (
-        <IconButton
+        <Button
           color={prop.color}
-          customClass={classes.actionButton + " " + classes.actionButtonRound}
+          onClick={prop.onClick}
+          customClass={classes.actionButton}
+          value={prop.accessor}
           key={key}>
           <prop.icon className={classes.icon} />
-        </IconButton>
+        </Button>
       )
     })
+
     return (
       <GridContainer>
         <ItemGrid xs={12}>
@@ -116,29 +106,18 @@ class ExtendedTables extends React.Component {
             title="Portfolio"
             content={
               <ReactTable
+                //NEED TO SETSTATE OF EACH INDIVIDUAL ITEM IN ORDER TO FIND ID FOR DELETE/EDIT
                 data={this.state.portfolio.map((prop, key) => {
                   return {
-                    id: key,
+                    id: prop[0],
                     investment_name: prop[1],
                     quantity: prop[2],
                     purchase_date: prop[3],
                     price: prop[4],
-                    value: "1",
+                    value: prop[2] * prop[4],
                     actions: fillButtons
                   }
                 })}
-                // id:key,
-                // investment_name:portfolio[1],
-                //     // quantity:portfolio[2],
-                //     // purchase_date:portfolio[3],
-                //     // price:portfolio[4],
-                //     // value: "15,000",
-                //     // actions:(fillButtons)
-                //   // ]
-                // })
-                //     ("Google", "50", "3/3/13", "1000.00", "60,000", fillButtons)
-                //   ]
-                // ]}
                 columns={[
                   {
                     Header: "Investment",
@@ -161,24 +140,12 @@ class ExtendedTables extends React.Component {
                     accessor: "price"
                   },
                   {
-                    Header: "Edit",
+                    Header: "Actions",
                     accessor: "actions"
                   }
                 ]}
-                // customCellClasses={[
-                //   classes.center,
-                //   classes.right,
-                //   classes.right
-                // ]}
-                // customClassesForCells={[0, 4, 5]}
-                // customHeadCellClasses={[
-                //   classes.center,
-                //   classes.right,
-                //   classes.right
-                // ]}
-                // customHeadClassesForCells={[0, 4, 5]}
                 sortable={false}
-                defaultPageSize={25}
+                // defaultPageSize={25}
                 showPaginationTop={false}
                 showPaginationBottom={false}
                 className="-highlight"
