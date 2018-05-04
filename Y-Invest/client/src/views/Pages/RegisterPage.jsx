@@ -41,6 +41,8 @@ class RegisterPage extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.createUser = this.createUser.bind(this)
   }
+
+  //MOVE THIS INTO SEPERATE FILE IN FUTURE
   handleChange(evt) {
     let val = evt.target.value
     let input = evt.target.name
@@ -49,6 +51,7 @@ class RegisterPage extends React.Component {
     })
   }
 
+  //MOVE THIS INTO SEPERATE FILE IN FUTURE
   createUser(evt) {
     evt.preventDefault()
     const { email, password, username } = this.state

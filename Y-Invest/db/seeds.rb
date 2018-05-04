@@ -11,4 +11,4 @@ Portfolio.destroy_all
 
 User.create!({email: 'mtg@gmail.com', password: 'Matteson'})
 
-Portfolio.create!({investment_name: 'Google', quantity: '10', purchase_date: '2018-05-03', price: '1000'})
+# Portfolio.create!({investment_name: 'Google', quantity: '10', purchase_date: '2018-05-03', price: '1000'})

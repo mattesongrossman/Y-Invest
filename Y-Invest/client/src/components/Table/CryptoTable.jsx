@@ -10,8 +10,9 @@ import ShowChart from "@material-ui/icons/ShowChart"
 import GridContainer from "components/Grid/GridContainer.jsx"
 import ItemGrid from "components/Grid/ItemGrid.jsx"
 import IconCard from "components/Cards/IconCard.jsx"
-import IconButton from "components/CustomButtons/IconButton.jsx"
+// import IconButton from "components/CustomButtons/IconButton.jsx"
 import Button from "material-ui/Button"
+import portfolio from "components/CustomInput/PortfolioActions.jsx"
 
 import api from "../../Api"
 import TextField from "material-ui/TextField"
@@ -27,9 +28,17 @@ class CryptoTable extends React.Component {
     super(props)
     this.state = {
       crypto: [],
-      open: false
+      open: false,
+      investment_name: "",
+      quantity: null,
+      purchase_date: "",
+      price: "",
+      createdPortfolio: false
     }
+    this.handleChange = this.handleChange.bind(this)
+    this.AddPortfolioItem = this.AddPortfolioItem.bind(this)
   }
+
   handleOpen = () => {
     this.setState({ open: true })
   }
@@ -67,6 +76,32 @@ class CryptoTable extends React.Component {
     }
     return {}
   }
+//handles input change on TextField
+handleChange(evt) {
+  let val = evt.target.value
+  let input = evt.target.name
+  this.setState({
+    [input]: val
+  })
+}
+//creates portfolio
+AddPortfolioItem(evt) {
+  evt.preventDefault()
+  const { investment_name, quantity, purchase_date, price, date } = this.state
+  console.log("test")
+  const body = {
+    investment_name: investment_name,
+    quantity: quantity,
+    purchase_date: purchase_date,
+    price: price,
+    date: date
+  }
+  api.AddPortfolioItem(body).then(response => {
+    this.setState({
+      createdPortfolio: true
+    })
+  })
+}
 
   render() {
     return (
@@ -94,6 +129,7 @@ class CryptoTable extends React.Component {
                           color="primary">
                           <PlaylistAdd />
                         </Button>
+                        <form onSubmit={this.AddPortfolioItem}>
                         <Dialog
                           open={this.state.open}
                           style={{
@@ -106,21 +142,27 @@ class CryptoTable extends React.Component {
                               Add Investment
                             </DialogContentText>
                             <TextField
+                              onChange={this.handleChange}
                               autoFocus
+                              name="investment_name"
                               id="investment"
                               label="Investment Name"
-                              value="Bitcoin"
+                              // value=""
                               type="text"
                               fullWidth
                             />
                             <TextField
+                              onChange={this.handleChange}
                               autoFocus
+                              name="quantity"
                               id="quantity"
                               label="Quantity"
                               type="number"
                             />
                             <br />
                             <TextField
+                              onChange={this.handleChange}
+                              name="price"
                               autoFocus
                               id="price"
                               label="Price"
@@ -128,7 +170,12 @@ class CryptoTable extends React.Component {
                             />
                             <br />
                             <br />
-                            <TextField autoFocus id="date" type="date" />
+                            <TextField
+                              onChange={this.handleChange}
+                              name="purchase_date"
+                              autoFocus
+                              id="date"
+                              type="date" />
                           </DialogContent>
                           <DialogActions>
                             <Button
@@ -145,6 +192,7 @@ class CryptoTable extends React.Component {
                             </Button>
                           </DialogActions>
                         </Dialog>
+                        </form>
                       </div>
                     )
                   }

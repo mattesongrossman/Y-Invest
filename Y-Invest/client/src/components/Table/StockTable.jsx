@@ -10,7 +10,7 @@ import ShowChart from "@material-ui/icons/ShowChart"
 import GridContainer from "components/Grid/GridContainer.jsx"
 import ItemGrid from "components/Grid/ItemGrid.jsx"
 import IconCard from "components/Cards/IconCard.jsx"
-import IconButton from "components/CustomButtons/IconButton.jsx"
+// import IconButton from "components/CustomButtons/IconButton.jsx"
 import Button from "material-ui/Button"
 
 import api from "../../Api"
@@ -69,7 +69,7 @@ class StockTables extends React.Component {
   }
 
   render() {
-    let { stock } = this.state
+    // let { stock } = this.state
     return (
       <GridContainer>
         <ItemGrid xs={12}>
@@ -114,9 +114,9 @@ class StockTables extends React.Component {
                               autoFocus
                               id="investment"
                               label="Investment Name"
-                              value={stock.map((prop, index) => {
-                                  return <ReactTable key={index} data={prop.name} />
-                              })}
+                              // value={stock.map((prop, index) => {
+                              //     return <ReactTable key={index} data={prop.name} />
+                              // })}
                               type="text"
                               fullWidth
                             />

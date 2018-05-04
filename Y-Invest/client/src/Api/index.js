@@ -1,4 +1,5 @@
 const api = {
+//USER CALLS TO DB
   getUsers() {
     return fetch("api/users", {
       method: "GET",
@@ -19,6 +20,28 @@ const api = {
     })
   },
 
+//PORTFOLIO CALLS TO DB
+  getPortfolios() {
+    return fetch("api/portfolios", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify()
+    }).then(response => response.json())
+  },
+
+  PlaylistAddPortfolio(newPortfolioItem) {
+    return fetch("api/portfolios", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newPortfolioItem)
+    })
+  },
+
+//CALLS TO API
   getNews() {
     return fetch(
       "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=596765967a80416c8c7f60c9fc7cba2a"

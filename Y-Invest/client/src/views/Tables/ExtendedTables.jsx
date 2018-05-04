@@ -2,17 +2,17 @@ import React from "react"
 
 // material-ui components
 import withStyles from "material-ui/styles/withStyles"
-import Checkbox from "material-ui/Checkbox"
+// import Checkbox from "material-ui/Checkbox"
 
 // material-ui icons
 import Assignment from "@material-ui/icons/Assignment"
 import Person from "@material-ui/icons/Person"
 import Edit from "@material-ui/icons/Edit"
 import Close from "@material-ui/icons/Close"
-import Check from "@material-ui/icons/Check"
-import Remove from "@material-ui/icons/Remove"
-import Add from "@material-ui/icons/Add"
-import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight"
+// import Check from "@material-ui/icons/Check"
+// import Remove from "@material-ui/icons/Remove"
+// import Add from "@material-ui/icons/Add"
+// import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight"
 
 // core components
 import GridContainer from "components/Grid/GridContainer.jsx"
@@ -24,9 +24,6 @@ import IconButton from "components/CustomButtons/IconButton.jsx"
 
 import extendedTablesStyle from "assets/jss/material-dashboard-pro-react/views/extendedTablesStyle.jsx"
 
-import product1 from "assets/img/product1.jpg"
-import product2 from "assets/img/product2.jpg"
-import product3 from "assets/img/product3.jpg"
 
 class ExtendedTables extends React.Component {
   constructor(props) {
