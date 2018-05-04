@@ -60,6 +60,7 @@ class Dashboard extends React.Component {
           //   <ItemGrid xs={12} sm={12} md={4}>
           <ImagePriceCard
             display="flex"
+            style={{maxWidth:"30%", flex:1, alignItems:"center", justifyContent:"center"}}
             image={news.urlToImage}
             title={news.title}
             text={news.description}

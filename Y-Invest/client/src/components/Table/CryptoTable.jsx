@@ -4,6 +4,7 @@ import ReactTable from "react-table"
 
 // @material-ui/icons
 import PlaylistAdd from "@material-ui/icons/PlaylistAdd"
+import ShowChart from "@material-ui/icons/ShowChart"
 
 // core components
 import GridContainer from "components/Grid/GridContainer.jsx"
@@ -72,7 +73,7 @@ class CryptoTable extends React.Component {
       <GridContainer>
         <ItemGrid xs={12}>
           <IconCard
-            icon={PlaylistAdd}
+            icon={ShowChart}
             title="CryptoTable"
             content={
               <ReactTable
@@ -98,8 +99,6 @@ class CryptoTable extends React.Component {
                           style={{
                             backgroundColor: "white"
                           }}
-                          overlayStyle={{ backgroundColor: "transparent" }}
-                          modal={false}
                           onClose={this.handleClose}>
                           <DialogTitle>Add:</DialogTitle>
                           <DialogContent>
@@ -160,7 +159,8 @@ class CryptoTable extends React.Component {
                   },
                   {
                     Header: "Name",
-                    accessor: "name"
+                    accessor: "name",
+                    minWidth: 150
                   },
                   {
                     Header: "Price",
@@ -205,7 +205,7 @@ class CryptoTable extends React.Component {
                     maxWidth: 100
                   }
                 ]}
-                defaultPageSize={10}
+                defaultPageSize={5}
                 showPaginationTop
                 showPaginationBottom={false}
                 className="-striped -highlight"

@@ -20,7 +20,7 @@ import HeaderLinks from "components/Header/HeaderLinks.jsx"
 
 import sidebarStyle from "assets/jss/material-dashboard-pro-react/components/sidebarStyle.jsx"
 
-// import avatar from "assets/img/stock.jpg"
+import image from "assets/img/stock.jpg"
 
 var ps
 
@@ -134,7 +134,7 @@ class Sidebar extends React.Component {
     var user = (
       <div className={userWrapperClass}>
         <div className={photo}>
-          <img src="" className={classes.avatarImg} alt="..." />
+          <img src={image} className={classes.avatarImg} alt="..." />
         </div>
         <List className={classes.list}>
           <ListItem className={classes.item + " " + classes.userItem}>
@@ -388,10 +388,10 @@ class Sidebar extends React.Component {
       })
     var brand = (
       <div className={logoClasses}>
-        <a href="http://www.creative-tim.com" className={logoMini}>
+        <a href="/" className={logoMini}>
           <img src={logo} alt="logo" className={classes.img} />
         </a>
-        <a href="http://www.creative-tim.com" className={logoNormal}>
+        <a href="/" className={logoNormal}>
           {logoText}
         </a>
       </div>

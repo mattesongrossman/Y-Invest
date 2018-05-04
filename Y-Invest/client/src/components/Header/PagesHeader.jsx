@@ -87,7 +87,7 @@ class PagesHeader extends React.Component {
       <AppBar position="static" className={classes.appBar + appBarClasses}>
         <Toolbar className={classes.container}>
           <div className={classes.flex}>
-            <Button href="#" className={classes.title}>
+            <Button href="/dashboard" className={classes.title}>
               Y-Invest
             </Button>
           </div>

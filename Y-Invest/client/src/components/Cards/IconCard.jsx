@@ -59,7 +59,7 @@ function IconCard({ ...props }) {
 }
 
 IconCard.defaultProps = {
-  iconColor: "purple",
+  iconColor: "green",
 };
 
 IconCard.propTypes = {

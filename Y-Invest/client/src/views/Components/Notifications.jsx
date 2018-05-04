@@ -83,13 +83,13 @@ class Notifications extends React.Component {
               Handcrafted by our friends from{" "}
               {
                 // eslint-disable-next-line
-              }<a target="_blank" href="https://material-ui-next.com/">
+              }<a target="_blank" href="/">
                 Material UI
               </a>{" "}
               and styled by{" "}
               {
                 // eslint-disable-next-line
-              }<a target="_blank" href="https://www.creative-tim.com/">
+              }<a target="_blank" href="/">
                 Creative Tim
               </a>. Please checkout the{" "}
               <a href="#pablo" target="_blank">

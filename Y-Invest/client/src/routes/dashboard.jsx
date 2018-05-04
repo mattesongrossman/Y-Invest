@@ -34,6 +34,7 @@ import GridOn from "@material-ui/icons/GridOn"
 // import Place from "@material-ui/icons/Place"
 // import WidgetsIcon from "@material-ui/icons/Widgets"
 import Timeline from "@material-ui/icons/Timeline"
+import InsertChart from "@material-ui/icons/InsertChart"
 // import DateRange from "@material-ui/icons/DateRange"
 
 import Homepage from "views/Homepage"
@@ -136,7 +137,7 @@ var dashRoutes = [
   {
     path: "/charts",
     name: "Charts",
-    icon: Timeline,
+    icon: InsertChart,
     component: Charts
   },
   { redirect: true, path: "/", pathTo: "/dashboard", name: "Dashboard" }

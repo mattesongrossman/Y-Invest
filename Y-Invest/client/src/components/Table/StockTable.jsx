@@ -4,6 +4,7 @@ import ReactTable from "react-table"
 
 // @material-ui/icons
 import PlaylistAdd from "@material-ui/icons/PlaylistAdd"
+import ShowChart from "@material-ui/icons/ShowChart"
 
 // core components
 import GridContainer from "components/Grid/GridContainer.jsx"
@@ -68,12 +69,13 @@ class StockTables extends React.Component {
   }
 
   render() {
+    let { stock } = this.state
     return (
       <GridContainer>
         <ItemGrid xs={12}>
           <IconCard
-            icon={PlaylistAdd}
-            title="Stock Table"
+            icon={ShowChart}
+            title="StockTable"
             content={
               <ReactTable
                 data={this.state.stock.map((prop, key) => {
@@ -81,9 +83,13 @@ class StockTables extends React.Component {
                     id: key,
                     symbol: prop[0],
                     name: prop[1],
-                    price: `$ ` + prop[11],
-                    percent_change_24h: prop[23].toFixed(4),
-                    YTD_Change: prop[35].toFixed(4),
+                    price: `$ ` + prop[11].toFixed(2),
+                    percent_change_24h: (prop[23] * 100).toLocaleString({
+                      style: "percent"
+                    }),
+                    YTD_Change: (prop[35] * 100).toLocaleString({
+                      style: "percent"
+                    }),
                     market_cap: Number(prop[31]).toLocaleString(),
                     action: (
                       <div className="actions">
@@ -98,8 +104,6 @@ class StockTables extends React.Component {
                           style={{
                             backgroundColor: "white"
                           }}
-                          overlayStyle={{ backgroundColor: "transparent" }}
-                          modal={false}
                           onClose={this.handleClose}>
                           <DialogTitle>Add:</DialogTitle>
                           <DialogContent>
@@ -110,7 +114,9 @@ class StockTables extends React.Component {
                               autoFocus
                               id="investment"
                               label="Investment Name"
-                              value="Bitcoin"
+                              value={stock.map((prop, index) => {
+                                  return <ReactTable key={index} data={prop.name} />
+                              })}
                               type="text"
                               fullWidth
                             />
