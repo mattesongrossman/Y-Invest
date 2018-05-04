@@ -34,7 +34,8 @@ def update
      render json: {
        message: "Error"
      }
-end
+   end
+ end
 
 def destroy
   @portfolio = Portfolio.find(params[:id])

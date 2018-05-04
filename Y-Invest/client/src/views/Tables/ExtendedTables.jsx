@@ -1,5 +1,6 @@
 import React from "react"
 
+import ReactTable from "react-table"
 // material-ui components
 import withStyles from "material-ui/styles/withStyles"
 // import Checkbox from "material-ui/Checkbox"
@@ -24,15 +25,32 @@ import IconButton from "components/CustomButtons/IconButton.jsx"
 
 import extendedTablesStyle from "assets/jss/material-dashboard-pro-react/views/extendedTablesStyle.jsx"
 
+import api from "../../Api"
 
 class ExtendedTables extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      checked: []
+      checked: [],
+      portfolio: []
     }
     this.handleToggle = this.handleToggle.bind(this)
   }
+
+  componentDidMount() {
+    api.getPortfolios().then(portfolio => {
+      let portfolioData = Object.values(portfolio)
+      let portfolioArray = portfolioData.map(function(obj) {
+        return Object.keys(obj).map(function(key) {
+          return obj[key]
+        })
+      })
+      this.setState({
+        portfolio: portfolioArray
+      })
+    })
+  }
+
   handleToggle(value) {
     const { checked } = this.state
     const currentIndex = checked.indexOf(value)
@@ -48,94 +66,89 @@ class ExtendedTables extends React.Component {
       checked: newChecked
     })
   }
+
+  handleDestroy(evt) {
+    console.log(evt.target.value)
+  }
+
   render() {
     const { classes } = this.props
+    const { portfolio } = this.state
+    console.log(portfolio)
     const fillButtons = [
-      { color: "info", icon: Person },
-      { color: "success", icon: Edit },
-      { color: "danger", icon: Close }
+      // { color: "info", icon: Person },
+      { color: "success", icon: Edit, onClick: this.handleEdit },
+      {
+        color: "danger",
+        icon: Close,
+        onClick: this.handleDestroy,
+        accessor: "id"
+      }
     ].map((prop, key) => {
       return (
-        <Button color={prop.color} customClass={classes.actionButton} key={key}>
-          <prop.icon className={classes.icon} />
-        </Button>
-      )
-    })
-    const simpleButtons = [
-      { color: "infoNoBackground", icon: Person },
-      { color: "successNoBackground", icon: Edit },
-      { color: "dangerNoBackground", icon: Close }
-    ].map((prop, key) => {
-      return (
-        <Button color={prop.color} customClass={classes.actionButton} key={key}>
-          <prop.icon className={classes.icon} />
-        </Button>
-      )
-    })
-    const roundButtons = [
-      { color: "info", icon: Person },
-      { color: "success", icon: Edit },
-      { color: "danger", icon: Close }
-    ].map((prop, key) => {
-      return (
-        <IconButton
+        <Button
           color={prop.color}
-          customClass={classes.actionButton + " " + classes.actionButtonRound}
+          onClick={prop.onClick}
+          customClass={classes.actionButton}
+          value={prop.accessor}
           key={key}>
           <prop.icon className={classes.icon} />
-        </IconButton>
+        </Button>
       )
     })
+
     return (
       <GridContainer>
         <ItemGrid xs={12}>
           <IconCard
             icon={Assignment}
-            iconColor="rose"
+            iconColor="green"
             title="Portfolio"
             content={
-              <Table
-                tableHead={[
-                  "Investment",
-                  "Quantity",
-                  "Purchase Date",
-                  "Price",
-                  "Value",
-                  "Actions"
+              <ReactTable
+                //NEED TO SETSTATE OF EACH INDIVIDUAL ITEM IN ORDER TO FIND ID FOR DELETE/EDIT
+                data={this.state.portfolio.map((prop, key) => {
+                  return {
+                    id: prop[0],
+                    investment_name: prop[1],
+                    quantity: prop[2],
+                    purchase_date: prop[3],
+                    price: prop[4],
+                    value: prop[2] * prop[4],
+                    actions: fillButtons
+                  }
+                })}
+                columns={[
+                  {
+                    Header: "Investment",
+                    accessor: "investment_name"
+                  },
+                  {
+                    Header: "Quantity",
+                    accessor: "quantity"
+                  },
+                  {
+                    Header: "Purchase Date",
+                    accessor: "purchase_date"
+                  },
+                  {
+                    Header: "Price",
+                    accessor: "price"
+                  },
+                  {
+                    Header: "Value",
+                    accessor: "price"
+                  },
+                  {
+                    Header: "Actions",
+                    accessor: "actions"
+                  }
                 ]}
-                tableData={[
-                  ["Apple", "100", "3/3/13", "100.00", "15,000", fillButtons],
-                  ["Google", "50", "3/3/13", "1000.00", "60,000", fillButtons],
-                  ["Netflix", "250", "3/3/13", "150.00", "40,000", fillButtons],
-                  [
-                    "Berkshire",
-                    "200",
-                    "3/3/13",
-                    "150.00",
-                    "35,000",
-                    fillButtons
-                  ],
-                  [
-                    "Bank of America",
-                    "3000",
-                    "3/3/13",
-                    "20.10",
-                    "60,000",
-                    fillButtons
-                  ]
-                ]}
-                customCellClasses={[
-                  classes.center,
-                  classes.right,
-                  classes.right
-                ]}
-                customClassesForCells={[0, 4, 5]}
-                customHeadCellClasses={[
-                  classes.center,
-                  classes.right,
-                  classes.right
-                ]}
-                customHeadClassesForCells={[0, 4, 5]}
+                sortable={false}
+                // defaultPageSize={25}
+                showPaginationTop={false}
+                showPaginationBottom={false}
+                className="-highlight"
               />
             }
           />
