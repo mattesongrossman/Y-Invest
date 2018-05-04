@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_03_000155) do
+ActiveRecord::Schema.define(version: 2018_05_04_011602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "portfolios", force: :cascade do |t|
+    t.string "investment_name"
+    t.decimal "quantity"
+    t.date "purchase_date"
+    t.decimal "price"
+    t.bigint "user_id", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_portfolios_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email"

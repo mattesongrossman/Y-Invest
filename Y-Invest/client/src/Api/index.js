@@ -31,7 +31,7 @@ const api = {
     }).then(response => response.json())
   },
 
-  PlaylistAddPortfolio(newPortfolioItem) {
+  addPortfolioItem(newPortfolioItem) {
     return fetch("api/portfolios", {
       method: "POST",
       headers: {

@@ -1,5 +1,6 @@
 import React from "react"
 
+import ReactTable from "react-table"
 // material-ui components
 import withStyles from "material-ui/styles/withStyles"
 // import Checkbox from "material-ui/Checkbox"
@@ -24,15 +25,32 @@ import IconButton from "components/CustomButtons/IconButton.jsx"
 
 import extendedTablesStyle from "assets/jss/material-dashboard-pro-react/views/extendedTablesStyle.jsx"
 
+import api from "../../Api"
 
 class ExtendedTables extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      checked: []
+      checked: [],
+      portfolio: []
     }
     this.handleToggle = this.handleToggle.bind(this)
   }
+
+  componentDidMount() {
+    api.getPortfolios().then(portfolio => {
+      let portfolioData = Object.values(portfolio)
+      let portfolioArray = portfolioData.map(function(obj) {
+        return Object.keys(obj).map(function(key) {
+          return obj[key]
+        })
+      })
+      this.setState({
+        portfolio: portfolioArray
+      })
+    })
+  }
+
   handleToggle(value) {
     const { checked } = this.state
     const currentIndex = checked.indexOf(value)
@@ -48,8 +66,11 @@ class ExtendedTables extends React.Component {
       checked: newChecked
     })
   }
+
   render() {
     const { classes } = this.props
+    const { portfolio } = this.state
+    console.log(portfolio)
     const fillButtons = [
       { color: "info", icon: Person },
       { color: "success", icon: Edit },
@@ -91,51 +112,76 @@ class ExtendedTables extends React.Component {
         <ItemGrid xs={12}>
           <IconCard
             icon={Assignment}
-            iconColor="rose"
+            iconColor="green"
             title="Portfolio"
             content={
-              <Table
-                tableHead={[
-                  "Investment",
-                  "Quantity",
-                  "Purchase Date",
-                  "Price",
-                  "Value",
-                  "Actions"
+              <ReactTable
+                data={this.state.portfolio.map((prop, key) => {
+                  return {
+                    id: key,
+                    investment_name: prop[1],
+                    quantity: prop[2],
+                    purchase_date: prop[3],
+                    price: prop[4],
+                    value: "1",
+                    actions: fillButtons
+                  }
+                })}
+                // id:key,
+                // investment_name:portfolio[1],
+                //     // quantity:portfolio[2],
+                //     // purchase_date:portfolio[3],
+                //     // price:portfolio[4],
+                //     // value: "15,000",
+                //     // actions:(fillButtons)
+                //   // ]
+                // })
+                //     ("Google", "50", "3/3/13", "1000.00", "60,000", fillButtons)
+                //   ]
+                // ]}
+                columns={[
+                  {
+                    Header: "Investment",
+                    accessor: "investment_name"
+                  },
+                  {
+                    Header: "Quantity",
+                    accessor: "quantity"
+                  },
+                  {
+                    Header: "Purchase Date",
+                    accessor: "purchase_date"
+                  },
+                  {
+                    Header: "Price",
+                    accessor: "price"
+                  },
+                  {
+                    Header: "Value",
+                    accessor: "price"
+                  },
+                  {
+                    Header: "Edit",
+                    accessor: "actions"
+                  }
                 ]}
-                tableData={[
-                  ["Apple", "100", "3/3/13", "100.00", "15,000", fillButtons],
-                  ["Google", "50", "3/3/13", "1000.00", "60,000", fillButtons],
-                  ["Netflix", "250", "3/3/13", "150.00", "40,000", fillButtons],
-                  [
-                    "Berkshire",
-                    "200",
-                    "3/3/13",
-                    "150.00",
-                    "35,000",
-                    fillButtons
-                  ],
-                  [
-                    "Bank of America",
-                    "3000",
-                    "3/3/13",
-                    "20.10",
-                    "60,000",
-                    fillButtons
-                  ]
-                ]}
-                customCellClasses={[
-                  classes.center,
-                  classes.right,
-                  classes.right
-                ]}
-                customClassesForCells={[0, 4, 5]}
-                customHeadCellClasses={[
-                  classes.center,
-                  classes.right,
-                  classes.right
-                ]}
-                customHeadClassesForCells={[0, 4, 5]}
+                // customCellClasses={[
+                //   classes.center,
+                //   classes.right,
+                //   classes.right
+                // ]}
+                // customClassesForCells={[0, 4, 5]}
+                // customHeadCellClasses={[
+                //   classes.center,
+                //   classes.right,
+                //   classes.right
+                // ]}
+                // customHeadClassesForCells={[0, 4, 5]}
+                sortable={false}
+                defaultPageSize={25}
+                showPaginationTop={false}
+                showPaginationBottom={false}
+                className="-highlight"
               />
             }
           />
