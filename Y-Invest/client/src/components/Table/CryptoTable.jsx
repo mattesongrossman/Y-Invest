@@ -96,23 +96,20 @@ class CryptoTable extends React.Component {
       quantity: quantity,
       purchase_date: purchase_date,
       price: price,
-      date: date,
-      redirect: true
+      date: date
     }
     api.addPortfolioItem(body).then(response => {
       this.setState({
-        createdPortfolio: true
+        createdPortfolio: true,
+        redirect: true
       })
     })
   }
 
-  renderRedirect = () => {
-    if (this.state.redirect) {
-      return <Redirect to="/portfolios" />
-    }
-  }
-
   render() {
+    if (this.state.redirect) {
+      return <Redirect to="/portfolio" />
+    }
     console.log(this.state.crypto)
     return (
       <GridContainer>
