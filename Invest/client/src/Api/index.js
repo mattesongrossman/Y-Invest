@@ -1,7 +1,7 @@
 const api = {
-//USER CALLS TO DB
+  //USER CALLS TO DB
   getUsers() {
-    return fetch("api/users", {
+    return fetch("/users", {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
@@ -11,7 +11,7 @@ const api = {
   },
 
   createUser(newUser) {
-    return fetch("api/users", {
+    return fetch("/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -20,9 +20,9 @@ const api = {
     })
   },
 
-//PORTFOLIO CALLS TO DB
+  //PORTFOLIO CALLS TO DB
   getPortfolios() {
-    return fetch("api/portfolios", {
+    return fetch("/investments", {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
@@ -32,7 +32,7 @@ const api = {
   },
 
   addPortfolioItem(newPortfolioItem) {
-    return fetch("api/portfolios", {
+    return fetch("investments", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -41,7 +41,7 @@ const api = {
     })
   },
 
-//CALLS TO API
+  //CALLS TO API
   getNews() {
     return fetch(
       "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=596765967a80416c8c7f60c9fc7cba2a"
