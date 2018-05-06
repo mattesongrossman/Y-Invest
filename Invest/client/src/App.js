@@ -87,15 +87,15 @@ class App extends Component {
             path="/login"
             render={() =>
               !this.state.auth ? (
-                <LoginPage
+                <LoginForm
                   auth={this.state.auth}
                   username={this.state.username}
                   password={this.state.password}
-                  onChange={this.handleInputChange}
-                  onSubmit={this.handleLoginSubmit}
+                  handleInputChange={this.handleInputChange}
+                  handleLoginSubmit={this.handleLoginSubmit}
                 />
               ) : (
-                (alert("Already signed in"), <Redirect to="/dashboard" />)
+                <Redirect to="/dashboard" />
               )
             }
           />
