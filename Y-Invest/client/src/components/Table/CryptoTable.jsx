@@ -60,7 +60,7 @@ class CryptoTable extends React.Component {
         return key
       })
       this.setState({
-        crypto: cryptoArray,
+        crypto: crypto,
         cryptoObj: cryptoData,
         key: key
       })
@@ -110,7 +110,7 @@ class CryptoTable extends React.Component {
     if (this.state.redirect) {
       return <Redirect to="/portfolio" />
     }
-    console.log(this.state.crypto)
+    console.log(this.state.investment_name)
     return (
       <GridContainer>
         <ItemGrid xs={12}>
@@ -121,13 +121,13 @@ class CryptoTable extends React.Component {
               <ReactTable
                 data={this.state.crypto.map((prop, key) => {
                   return {
-                    id: prop[0],
-                    symbol: prop[2],
-                    name: prop[1],
-                    price: `$ ` + prop[4],
-                    percent_change_24h: prop[12],
-                    rank: Number(prop[3]),
-                    market_cap: Number(prop[7]).toLocaleString(),
+                    id: prop.id,
+                    symbol: prop.symbol,
+                    name: prop.name,
+                    price: `$ ` + prop.price_usd,
+                    percent_change_24h: prop.percent_change_24h,
+                    rank: Number(prop.rank),
+                    market_cap: Number(prop.market_cap_usd).toLocaleString(),
                     action: (
                       <div className="actions">
                         <Button

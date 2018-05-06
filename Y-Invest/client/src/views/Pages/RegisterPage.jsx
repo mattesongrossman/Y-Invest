@@ -36,7 +36,8 @@ class RegisterPage extends React.Component {
       createdUser: false,
       username: "",
       email: "",
-      password: ""
+      password: "",
+      name: ""
     }
     this.handleChange = this.handleChange.bind(this)
     this.createUser = this.createUser.bind(this)
@@ -54,9 +55,11 @@ class RegisterPage extends React.Component {
   //MOVE THIS INTO SEPERATE FILE IN FUTURE
   createUser(evt) {
     evt.preventDefault()
-    const { email, password, username } = this.state
+    const { email, password, username, name } = this.state
     console.log("test")
     const body = {
+      name: name,
+      username: username,
       email: email,
       password: password
     }
@@ -84,7 +87,7 @@ class RegisterPage extends React.Component {
                 <GridContainer justify="center">
                   <ItemGrid xs={8} sm={8} md={6}>
                     <form className={classes.form} onSubmit={createUser}>
-                      {/* <CustomInput
+                      <CustomInput
                         formControlProps={{
                           fullWidth: true,
                           className: classes.customFormControlClasses
@@ -101,7 +104,25 @@ class RegisterPage extends React.Component {
                           ),
                           placeholder: "Name..."
                         }}
-                      /> */}
+                      />
+                      <CustomInput
+                        formControlProps={{
+                          fullWidth: true,
+                          className: classes.customFormControlClasses
+                        }}
+                        inputProps={{
+                          onChange: handleChange,
+                          username: "username",
+                          startAdornment: (
+                            <InputAdornment
+                              position="start"
+                              className={classes.inputAdornment}>
+                              <Face className={classes.inputAdornmentIcon} />
+                            </InputAdornment>
+                          ),
+                          placeholder: "Username..."
+                        }}
+                      />
                       <CustomInput
                         formControlProps={{
                           fullWidth: true,
