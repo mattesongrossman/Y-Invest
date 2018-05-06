@@ -20,9 +20,19 @@ const api = {
     })
   },
 
+  loginUser(loginParams) {
+    return fetch("/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(loginParams)
+    })
+  },
+
   //PORTFOLIO CALLS TO DB
   getPortfolios() {
-    return fetch("/investments", {
+    return fetch("/api/investments", {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
@@ -32,7 +42,7 @@ const api = {
   },
 
   addPortfolioItem(newPortfolioItem) {
-    return fetch("investments", {
+    return fetch("/api/investments", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

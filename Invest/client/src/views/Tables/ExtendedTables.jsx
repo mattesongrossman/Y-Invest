@@ -34,19 +34,13 @@ class ExtendedTables extends React.Component {
       portfolio: [],
       portfolioLoaded: false
     }
-    this.handleToggle = this.handleToggle.bind(this)
+    // this.handleToggle = this.handleToggle.bind(this)
   }
 
   componentDidMount() {
     api.getPortfolios().then(portfolio => {
-      let portfolioData = Object.values(portfolio)
-      let portfolioArray = portfolioData.map(function(obj) {
-        return Object.keys(obj).map(function(key) {
-          return obj[key]
-        })
-      })
       this.setState({
-        portfolio: portfolioArray,
+        portfolio: portfolio.investment,
         portfolioLoaded: true
       })
     })
@@ -91,15 +85,14 @@ class ExtendedTables extends React.Component {
             title="Portfolio"
             content={
               <ReactTable
-                //NEED TO SETSTATE OF EACH INDIVIDUAL ITEM IN ORDER TO FIND ID FOR DELETE/EDIT
                 data={this.state.portfolio.map((prop, key) => {
                   return {
-                    id: prop[0],
-                    investment_name: prop[1],
-                    quantity: prop[2],
-                    purchase_date: prop[3],
-                    price: prop[4],
-                    value: prop[2] * prop[4],
+                    id: prop.id,
+                    investment_name: prop.security,
+                    quantity: prop.quantity,
+                    purchase_date: prop.purchase_date,
+                    price: prop.price,
+                    value: Number(prop.quantity * prop.price),
                     actions: fillButtons
                   }
                 })}

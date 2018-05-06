@@ -113,7 +113,7 @@ class RegisterPage extends React.Component {
                         }}
                         inputProps={{
                           onChange: handleChange,
-                          username: "username",
+                          name: "username",
                           startAdornment: (
                             <InputAdornment
                               position="start"

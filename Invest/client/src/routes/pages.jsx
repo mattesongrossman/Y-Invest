@@ -11,7 +11,7 @@ import Fingerprint from "@material-ui/icons/Fingerprint"
 
 const pagesRoutes = [
   {
-    path: "/register-page",
+    path: "/register",
     name: "Register Page",
     short: "Register",
     mini: "RP",
@@ -19,7 +19,7 @@ const pagesRoutes = [
     component: RegisterPage
   },
   {
-    path: "/pages/login-page",
+    path: "/login",
     name: "Login Page",
     short: "Login",
     mini: "LP",
@@ -45,7 +45,7 @@ const pagesRoutes = [
   {
     redirect: true,
     path: "/pages",
-    pathTo: "/register-page",
+    pathTo: "/register",
     name: "Register Page"
   }
 ]

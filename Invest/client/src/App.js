@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { BrowserRouter as Router, Route } from "react-router-dom"
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom"
 import Auth from "./modules/Auth"
 
 import Dashboard from "layouts/Dashboard.jsx"
@@ -11,6 +11,7 @@ import ExtendedTables from "views/Tables/ExtendedTables.jsx"
 import ReactTables from "views/Tables/ReactTables.jsx"
 import Charts from "views/Charts/Charts.jsx"
 import LoginPage from "views/Pages/LoginPage.jsx"
+import LoginForm from "views/Pages/LoginPage.jsx"
 import RegisterPage from "views/Pages/RegisterPage.jsx"
 
 // import pagesRoutes from "./pages.jsx"
@@ -30,45 +31,29 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      auth: Auth.isUserAuthenticated()
+      auth: Auth.isUserAuthenticated(),
+      username: "",
+      password: ""
     }
-    this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this)
+    // this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this)
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this)
+    this.handleInputChange = this.handleInputChange.bind(this)
   }
-
-  handleRegisterSubmit(e, data) {
-    e.preventDefault()
-    fetch("/api/users", {
-      method: "POST",
-      body: JSON.stringify({
-        user: data
-      }),
-      headers: {
-        "Content-Type": "application/json"
-      }
+  handleInputChange(e) {
+    const name = e.target.name
+    const value = e.target.value
+    this.setState({
+      [name]: value
     })
-      .then(res => res.json())
-      .then(res => {
-        // if (res.token) {
-        console.log(res)
-        // Auth.authenticateToken(res.token)
-        // this.setState({
-        //   auth: Auth.isUserAuthenticated()
-      })
-    //   }
-    // })
-    // .catch(err => {
-    //   console.log(err)
-    // })
   }
 
   handleLoginSubmit(e) {
     e.preventDefault()
-    fetch("/api/login", {
+    fetch("/login", {
       method: "POST",
       body: JSON.stringify({
-        username: this.state.loginUserName,
-        password: this.state.loginPassword
+        username: this.state.username,
+        password: this.state.password
       }),
       headers: {
         "Content-Type": "application/json"
@@ -81,8 +66,8 @@ class App extends Component {
           Auth.authenticateToken(res.token)
           this.setState({
             auth: Auth.isUserAuthenticated(),
-            loginUserName: "",
-            loginUserPassword: ""
+            username: "",
+            password: ""
           })
         }
       })
@@ -92,11 +77,28 @@ class App extends Component {
   }
 
   render() {
+    const { username } = this.state
     return (
       <Router>
         <div className="container">
-          {/* <Route exact="/dashboard" component={Dashboard} /> */}
-          {/* <Route exact path="/pages/login-page" component={Pages} /> */}
+          <Route path="/dashboard" component={Dashboard} />
+          <Route
+            exact
+            path="/login"
+            render={() =>
+              !this.state.auth ? (
+                <LoginPage
+                  auth={this.state.auth}
+                  username={this.state.username}
+                  password={this.state.password}
+                  onChange={this.handleInputChange}
+                  onSubmit={this.handleLoginSubmit}
+                />
+              ) : (
+                (alert("Already signed in"), <Redirect to="/dashboard" />)
+              )
+            }
+          />
           <Route exact path="/register-page" render={() => <RegisterPage />} />
         </div>
       </Router>
