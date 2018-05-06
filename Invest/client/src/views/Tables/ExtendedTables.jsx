@@ -40,7 +40,7 @@ class ExtendedTables extends React.Component {
   componentDidMount() {
     api.getPortfolios().then(portfolio => {
       this.setState({
-        portfolio: portfolio.investment,
+        portfolio: portfolio.investments,
         portfolioLoaded: true
       })
     })

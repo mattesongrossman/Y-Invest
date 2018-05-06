@@ -2,8 +2,12 @@ class InvestmentsController < ApiController
   before_action :require_login, except: [:index, :show]
 
   def index
-    investment = Investment.all
-    render json: { investment: investment }
+    user = User.find_by_auth_token!(request.headers[:token])
+    user_investments = Investment.where(user_id: user.id)
+    render json: {
+      user: { username: user.username, email: user.email, name: user.name },
+      investments: user_investments,
+    }
   end
 
   def show

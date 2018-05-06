@@ -81,7 +81,7 @@ class App extends Component {
     return (
       <Router>
         <div className="container">
-          <Route path="/dashboard" component={Dashboard} />
+          <Route component={Dashboard} />
           <Route
             exact
             path="/login"
@@ -99,7 +99,7 @@ class App extends Component {
               )
             }
           />
-          <Route exact path="/register-page" render={() => <RegisterPage />} />
+          <Route exact path="/register" render={() => <RegisterPage />} />
         </div>
       </Router>
     )

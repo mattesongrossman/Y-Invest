@@ -1,3 +1,5 @@
+import Auth from "../modules/Auth"
+
 const api = {
   //USER CALLS TO DB
   getUsers() {
@@ -32,9 +34,11 @@ const api = {
 
   //PORTFOLIO CALLS TO DB
   getPortfolios() {
-    return fetch("/api/investments", {
+    return fetch("investments", {
       method: "GET",
       headers: {
+        Authorization: `Token ${Auth.getToken()}`,
+        token: `${Auth.getToken()}`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify()
