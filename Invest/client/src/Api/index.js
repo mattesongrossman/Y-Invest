@@ -1,7 +1,7 @@
 const api = {
   //USER CALLS TO DB
   getUsers() {
-    return fetch("/users", {
+    return fetch("/api/users", {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
@@ -11,7 +11,7 @@ const api = {
   },
 
   createUser(newUser) {
-    return fetch("/users", {
+    return fetch("/api/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

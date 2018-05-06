@@ -1,6 +1,7 @@
 class UsersController < ApiController
   before_action :require_login, except: [:create]
 
+
   def create
     user = User.create!(user_params)
     render json: { token: user.auth_token }
@@ -13,7 +14,7 @@ class UsersController < ApiController
 
   private
   def user_params
-    params.require(:user).permit(:username, :email, :password, :name)
+    params.require(:user).permit(:username, :email, :name).merge(:password => :password)
   end
 
 end

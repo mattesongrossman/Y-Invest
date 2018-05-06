@@ -58,12 +58,13 @@ class RegisterPage extends React.Component {
     const { email, password, username, name } = this.state
     console.log("test")
     const body = {
-      name: name,
       username: username,
+      password: password,
       email: email,
-      password: password
+      name: name
     }
     api.createUser(body).then(response => {
+      console.log(response)
       this.setState({
         createdUser: true
       })
@@ -147,7 +148,7 @@ class RegisterPage extends React.Component {
                           className: classes.customFormControlClasses
                         }}
                         inputProps={{
-                          type: "password",
+                          // type: "password",
                           onChange: handleChange,
                           name: "password",
                           startAdornment: (

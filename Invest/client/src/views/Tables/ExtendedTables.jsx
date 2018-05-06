@@ -31,8 +31,8 @@ class ExtendedTables extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      checked: [],
-      portfolio: []
+      portfolio: [],
+      portfolioLoaded: false
     }
     this.handleToggle = this.handleToggle.bind(this)
   }
@@ -46,24 +46,9 @@ class ExtendedTables extends React.Component {
         })
       })
       this.setState({
-        portfolio: portfolioArray
+        portfolio: portfolioArray,
+        portfolioLoaded: true
       })
-    })
-  }
-
-  handleToggle(value) {
-    const { checked } = this.state
-    const currentIndex = checked.indexOf(value)
-    const newChecked = [...checked]
-
-    if (currentIndex === -1) {
-      newChecked.push(value)
-    } else {
-      newChecked.splice(currentIndex, 1)
-    }
-
-    this.setState({
-      checked: newChecked
     })
   }
 

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  post   "/login"       => "sessions#create"
-  delete "/logout"      => "sessions#destroy"
-  get "/profile"        => "users#profile"
-  resources :users, :investments
+  post   "/api/login"       => "sessions#create"
+  delete "/api/logout"      => "sessions#destroy"
+  get "/api/profile"        => "users#profile"
+  resources :users, path: "/api/users"
+  resources :investments, path: "/api/investments"
+
 end
