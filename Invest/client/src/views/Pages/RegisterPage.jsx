@@ -92,14 +92,14 @@ class RegisterPage extends React.Component {
               content={
                 <GridContainer
                   style={{
-                    "flex-flow": "wrap",
-                    "justify-content": "center"
+                    flexFlow: "wrap",
+                    justifyContent: "center"
                   }}>
                   <ItemGrid xs={8} sm={8} md={6}>
                     <div
                       style={{
-                        "flex-flow": "wrap",
-                        "justify-content": "center"
+                        flexFlow: "wrap",
+                        justifyContent: "center"
                       }}>
                       <form className={classes.form} onSubmit={createUser}>
                         <CustomInput

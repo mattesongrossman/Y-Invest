@@ -86,7 +86,8 @@ class App extends Component {
     return (
       <Router>
         <div className="container">
-          <Route component={Dashboard} />
+          {/* RENDER OF DASHBORD WITH SWITCH ROUTES MESSES UP LOGIN */}
+          <Route path="/" component={Dashboard} />
           <Route
             exact
             path="/login"
@@ -107,6 +108,7 @@ class App extends Component {
               )
             }
           />
+          }
           <Route exact path="/register" render={() => <RegisterPage />} />
         </div>
       </Router>

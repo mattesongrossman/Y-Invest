@@ -206,7 +206,7 @@
 
 import React from "react"
 
-const LoginPage = props => {
+const LoginForm = props => {
   return (
     <form className="loginform" onSubmit={props.handleLoginSubmit}>
       <input
@@ -228,4 +228,4 @@ const LoginPage = props => {
   )
 }
 
-export default LoginPage
+export default LoginForm

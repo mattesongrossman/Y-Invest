@@ -23,7 +23,7 @@ import Charts from "views/Charts/Charts.jsx"
 // import TimelinePage from "views/Pages/Timeline.jsx"
 // import RTLSupport from "views/Pages/RTLSupport.jsx"
 
-import pagesRoutes from "./pages.jsx"
+// import pagesRoutes from "./pages.jsx"
 
 // @material-ui/icons
 import DashboardIcon from "@material-ui/icons/Dashboard"
@@ -39,15 +39,37 @@ import InsertChart from "@material-ui/icons/InsertChart"
 
 // import Homepage from "views/Homepage"
 import RegisterPage from "views/Pages/RegisterPage.jsx"
+import LoginForm from "views/Pages/LoginPage.jsx"
+import Fingerprint from "@material-ui/icons/Fingerprint"
 
-var pages = [
-  {
-    path: "/register",
-    name: "Register",
-    mini: "RP",
-    component: RegisterPage
-  }
-].concat(pagesRoutes)
+// var pages = [
+//   // {
+//   //   collapse: true,
+//   //   name: "Pages",
+//   //   icon: ContentPaste,
+//   //   views: [
+//   // {
+//   {
+//     path: "/register",
+//     name: "Register",
+//     mini: "RP",
+//     component: RegisterPage
+//   },
+//   {
+//     path: "/login",
+//     name: "Login",
+//     short: "Login",
+//     mini: "LP",
+//     icon: Fingerprint,
+//     component: LoginForm
+//   }
+//   //     {
+//   //       path: "/forms/extended-forms",
+//   //       name: "Extended Forms",
+//   //       mini: "EF",
+//   //       component: ExtendedForms
+//   //     },
+// ]
 
 var dashRoutes = [
   {
@@ -57,72 +79,17 @@ var dashRoutes = [
     component: Dashboard
   },
   {
-    collapse: true,
-    path: "-page",
-    name: "Profile",
-    state: "openPages",
+    path: "/register",
+    name: "Register",
     icon: Image,
-    views: pages
+    component: RegisterPage
   },
-
-  // {
-  //   collapse: true,
-  //   path: "/forms",
-  //   name: "Forms",
-  //   state: "openForms",
-  //   icon: ContentPaste,
-  //   views: [
-  //     {
-  //       path: "/forms/regular-forms",
-  //       name: "Regular Forms",
-  //       mini: "RF",
-  //       component: RegularForms
-  //     },
-  //     {
-  //       path: "/forms/extended-forms",
-  //       name: "Extended Forms",
-  //       mini: "EF",
-  //       component: ExtendedForms
-  //     },
-  //     {
-  //       path: "/forms/validation-forms",
-  //       name: "Validation Forms",
-  //       mini: "VF",
-  //       component: ValidationForms
-  //     },
-  //     { path: "/forms/wizard", name: "Wizard", mini: "W", component: Wizard }
-  //   ]
-  // },
-  // {
-  //   collapse: true,
-  //   path: "/tables",
-  //   name: "Tables",
-  //   state: "openTables",
-  //   icon: GridOn,
-  //   views: [
-  //     {
-  //       path: "/tables/regular-tables",
-  //       name: "Regular Tables",
-  //       mini: "RT",
-  //       component: RegularTables
-  //     },
-  //     {
-  //       path: "/tables/extended-tables",
-  //       name: "Extended Tables",
-  //       mini: "ET",
-  //       component: ExtendedTables
-  //     },
-  //     {
-  //       path: "/tables/react-tables",
-  //       name: "React Tables",
-  //       mini: "RT",
-  //       component: ReactTables
-  //     }
-  //   ]
-  // },
-  // { path: "/widgets", name: "Widgets", icon: WidgetsIcon, component: Widgets },
-  // { path: "/charts", name: "Charts", icon: Timeline, component: Charts },
-  // { path: "/calendar", name: "Calendar", icon: DateRange, component: Calendar },
+  {
+    path: "/login",
+    name: "Login",
+    icon: Fingerprint,
+    component: LoginForm
+  },
   {
     path: "/table",
     name: "Investment Hub",

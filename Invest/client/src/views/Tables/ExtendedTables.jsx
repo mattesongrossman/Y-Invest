@@ -1,4 +1,5 @@
 import React from "react"
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom"
 
 import ReactTable from "react-table"
 // material-ui components
@@ -26,11 +27,13 @@ import IconButton from "components/CustomButtons/IconButton.jsx"
 import extendedTablesStyle from "assets/jss/material-dashboard-pro-react/views/extendedTablesStyle.jsx"
 
 import api from "../../Api"
+import Auth from "../../modules/Auth"
 
 class ExtendedTables extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      auth: Auth.isUserAuthenticated(),
       portfolio: [],
       portfolioLoaded: false
     }
@@ -61,8 +64,9 @@ class ExtendedTables extends React.Component {
     const { classes } = this.props
     const { portfolio } = this.state
     console.log(portfolio)
+    console.log(Auth.isUserAuthenticated())
 
-    return (
+    return this.state.auth ? (
       <GridContainer>
         <ItemGrid xs={12}>
           <Button
@@ -144,6 +148,8 @@ class ExtendedTables extends React.Component {
           />
         </ItemGrid>
       </GridContainer>
+    ) : (
+      <Redirect to="/login" />
     )
   }
 }
