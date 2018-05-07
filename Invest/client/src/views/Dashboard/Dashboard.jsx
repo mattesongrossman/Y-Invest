@@ -13,9 +13,9 @@ import withStyles from "material-ui/styles/withStyles"
 import Timeline from "@material-ui/icons/Timeline"
 
 // core components
-import GridContainer from "components/Grid/GridContainer.jsx"
+// import GridContainer from "components/Grid/GridContainer.jsx"
 import ItemGrid from "components/Grid/ItemGrid.jsx"
-import Grid from "material-ui/Grid"
+// import Grid from "material-ui/Grid"
 // import Button from "components/CustomButtons/Button.jsx"
 
 import ImagePriceCard from "components/Cards/ImagePriceCard.jsx"
@@ -56,8 +56,6 @@ class Dashboard extends React.Component {
     const News = this.state.news.map((news, index) => {
       if (news.urlToImage) {
         return (
-          // <GridContainer justify="space-between">
-          //   <ItemGrid xs={12} sm={12} md={4}>
           <ImagePriceCard
             style={{
               width: "30%"
@@ -68,41 +66,7 @@ class Dashboard extends React.Component {
             price={news.source.name}
             statIcon={Timeline}
             statText={news.publishedAt}
-            // hover
-            //   underImage={
-            //     <div>
-            //       <Tooltip
-            //         id="tooltip-top"
-            //         title="View"
-            //         placement="bottom"
-            //         classes={{ tooltip: classes.tooltip }}>
-            //         <Button color="defaultNoBackground" justIcon>
-            //           <ArtTrack className={classes.underChartIcons} />
-            //         </Button>
-            //       </Tooltip>
-            //       <Tooltip
-            //         id="tooltip-top"
-            //         title="Edit"
-            //         placement="bottom"
-            //         classes={{ tooltip: classes.tooltip }}>
-            //         <Button color="successNoBackground" justIcon>
-            //           <Refresh className={classes.underChartIcons} />
-            //         </Button>
-            //       </Tooltip>
-            //       <Tooltip
-            //         id="tooltip-top"
-            //         title="Remove"
-            //         placement="bottom"
-            //         classes={{ tooltip: classes.tooltip }}>
-            //         <Button color="dangerNoBackground" justIcon>
-            //           <Edit className={classes.underChartIcons} />
-            //         </Button>
-            //       </Tooltip>
-            //     </div>
-            //   }
           />
-          //   </ItemGrid>
-          // </GridContainer>
         )
       }
     })

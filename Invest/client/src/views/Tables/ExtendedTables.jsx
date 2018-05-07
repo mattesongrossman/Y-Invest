@@ -7,7 +7,7 @@ import withStyles from "material-ui/styles/withStyles"
 
 // material-ui icons
 import Assignment from "@material-ui/icons/Assignment"
-import Person from "@material-ui/icons/Person"
+// import Person from "@material-ui/icons/Person"
 import Edit from "@material-ui/icons/Edit"
 import Close from "@material-ui/icons/Close"
 // import Check from "@material-ui/icons/Check"
@@ -19,9 +19,9 @@ import Close from "@material-ui/icons/Close"
 import GridContainer from "components/Grid/GridContainer.jsx"
 import ItemGrid from "components/Grid/ItemGrid.jsx"
 import IconCard from "components/Cards/IconCard.jsx"
-import Table from "components/Table/Table.jsx"
+// import Table from "components/Table/Table.jsx"
 import Button from "components/CustomButtons/Button.jsx"
-import IconButton from "components/CustomButtons/IconButton.jsx"
+// import IconButton from "components/CustomButtons/IconButton.jsx"
 
 import extendedTablesStyle from "assets/jss/material-dashboard-pro-react/views/extendedTablesStyle.jsx"
 

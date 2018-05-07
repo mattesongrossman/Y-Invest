@@ -12,7 +12,7 @@ import ItemGrid from "components/Grid/ItemGrid.jsx"
 import IconCard from "components/Cards/IconCard.jsx"
 // import IconButton from "components/CustomButtons/IconButton.jsx"
 import Button from "material-ui/Button"
-import portfolio from "components/CustomInput/PortfolioActions.jsx"
+// import portfolio from "components/CustomInput/PortfolioActions.jsx"
 import { Redirect } from "react-router"
 
 import api from "../../Api"
@@ -30,7 +30,7 @@ class CryptoTable extends React.Component {
     this.state = {
       crypto: [],
       open: false,
-      investment_name: "",
+      security: "",
       quantity: null,
       purchase_date: "",
       price: "",
@@ -89,10 +89,10 @@ class CryptoTable extends React.Component {
   //creates portfolio
   addPortfolioItem(evt) {
     evt.preventDefault()
-    const { investment_name, quantity, purchase_date, price, date } = this.state
+    const { security, quantity, purchase_date, price, date } = this.state
     console.log("test")
     const body = {
-      investment_name: investment_name,
+      security: security,
       quantity: quantity,
       purchase_date: purchase_date,
       price: price,
@@ -110,7 +110,7 @@ class CryptoTable extends React.Component {
     if (this.state.redirect) {
       return <Redirect to="/portfolio" />
     }
-    console.log(this.state.investment_name)
+    console.log(this.state.security)
     return (
       <GridContainer>
         <ItemGrid xs={12}>
@@ -151,7 +151,7 @@ class CryptoTable extends React.Component {
                               <TextField
                                 onChange={this.handleChange}
                                 autoFocus
-                                name="investment_name"
+                                name="security"
                                 id="investment"
                                 label="Investment Name"
                                 // value=""

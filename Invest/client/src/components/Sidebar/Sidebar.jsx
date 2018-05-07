@@ -20,7 +20,7 @@ import HeaderLinks from "components/Header/HeaderLinks.jsx"
 
 import sidebarStyle from "assets/jss/material-dashboard-pro-react/components/sidebarStyle.jsx"
 
-import image from "assets/img/stock.jpg"
+// import image from "assets/img/stock.jpg"
 
 var ps
 

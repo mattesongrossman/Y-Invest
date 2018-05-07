@@ -3,7 +3,7 @@
 // #############################
 
 import {
-  card,
+  // card,
   cardHeader,
   defaultFont,
   cardActions,
@@ -22,13 +22,13 @@ const imagePriceCardStyle = {
   card: {
     display: "inline-block",
     position: "relative",
-    width: "30%",
+    width: "49%",
     margin: "25px 0",
     boxShadow: "0 1px 4px 0 rgba(0, 0, 0, 0.14)",
     borderRadius: "6px",
     color: "rgba(0, 0, 0, 0.87)",
     background: "#fff",
-    "@media (max-width: 850px)": {
+    "@media (maxWidth: 850px)": {
       width: "100%",
       height: "100%"
     }

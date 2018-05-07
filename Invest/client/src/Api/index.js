@@ -3,7 +3,7 @@ import Auth from "../modules/Auth"
 const api = {
   //USER CALLS TO DB
   getUsers() {
-    return fetch("/api/users", {
+    return fetch("/users", {
       method: "GET",
       headers: {
         "Content-Type": "application/json"
@@ -13,9 +13,11 @@ const api = {
   },
 
   createUser(newUser) {
-    return fetch("/api/users", {
+    return fetch("/users", {
       method: "POST",
       headers: {
+        Authorization: `Token ${Auth.getToken()}`,
+        token: `${Auth.getToken()}`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify(newUser)
@@ -23,7 +25,7 @@ const api = {
   },
 
   loginUser(loginParams) {
-    return fetch("/api/login", {
+    return fetch("/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -46,9 +48,11 @@ const api = {
   },
 
   addPortfolioItem(newPortfolioItem) {
-    return fetch("/api/investments", {
+    return fetch("/investments", {
       method: "POST",
       headers: {
+        Authorization: `Token ${Auth.getToken()}`,
+        token: `${Auth.getToken()}`,
         "Content-Type": "application/json"
       },
       body: JSON.stringify(newPortfolioItem)

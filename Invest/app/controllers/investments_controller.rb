@@ -30,6 +30,13 @@ class InvestmentsController < ApiController
     end
   end
 
+  def destroy
+    user = User.find_by_auth_token!(request.headers[:token])
+    user_investments = Investment.find(params[:id])
+    user_investments.destroy
+  end
+
+
   private
   def investment_params
     params.require(:investment).permit(:security, :quantity, :purchase_date, :price)

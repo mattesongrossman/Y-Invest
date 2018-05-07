@@ -3,29 +3,29 @@ import { BrowserRouter as Router, Route, Redirect } from "react-router-dom"
 import Auth from "./modules/Auth"
 
 import Dashboard from "layouts/Dashboard.jsx"
-import Pages from "layouts/Pages.jsx"
-import dashRoutes from "routes/dashboard.jsx"
-import pagesRoutes from "routes/pages.jsx"
-
-import ExtendedTables from "views/Tables/ExtendedTables.jsx"
-import ReactTables from "views/Tables/ReactTables.jsx"
-import Charts from "views/Charts/Charts.jsx"
-import LoginPage from "views/Pages/LoginPage.jsx"
+// import Pages from "layouts/Pages.jsx"
+// import dashRoutes from "routes/dashboard.jsx"
+// import pagesRoutes from "routes/pages.jsx"
+//
+// import ExtendedTables from "views/Tables/ExtendedTables.jsx"
+// import ReactTables from "views/Tables/ReactTables.jsx"
+// import Charts from "views/Charts/Charts.jsx"
+// import LoginPage from "views/Pages/LoginPage.jsx"
 import LoginForm from "views/Pages/LoginPage.jsx"
 import RegisterPage from "views/Pages/RegisterPage.jsx"
 
 // import pagesRoutes from "./pages.jsx"
 
 // @material-ui/icons
-import DashboardIcon from "@material-ui/icons/Dashboard"
-import Image from "@material-ui/icons/Image"
+// import DashboardIcon from "@material-ui/icons/Dashboard"
+// import Image from "@material-ui/icons/Image"
 
-import GridOn from "@material-ui/icons/GridOn"
+// import GridOn from "@material-ui/icons/GridOn"
 
-import Timeline from "@material-ui/icons/Timeline"
-import InsertChart from "@material-ui/icons/InsertChart"
-
-import Homepage from "views/Homepage"
+// import Timeline from "@material-ui/icons/Timeline"
+// import InsertChart from "@material-ui/icons/InsertChart"
+//
+// import Homepage from "views/Homepage"
 
 class App extends Component {
   constructor() {
@@ -77,7 +77,7 @@ class App extends Component {
   }
 
   render() {
-    const { username } = this.state
+    // const { username } = this.state
     return (
       <Router>
         <div className="container">
