@@ -37,14 +37,15 @@ import Timeline from "@material-ui/icons/Timeline"
 import InsertChart from "@material-ui/icons/InsertChart"
 // import DateRange from "@material-ui/icons/DateRange"
 
-import Homepage from "views/Homepage"
+// import Homepage from "views/Homepage"
+import RegisterPage from "views/Pages/RegisterPage.jsx"
 
 var pages = [
   {
-    path: "/users",
-    name: "User Page",
-    mini: "UP",
-    component: Homepage
+    path: "/register",
+    name: "Register",
+    mini: "RP",
+    component: RegisterPage
   }
 ].concat(pagesRoutes)
 

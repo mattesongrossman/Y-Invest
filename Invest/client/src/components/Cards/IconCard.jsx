@@ -1,14 +1,14 @@
-import React from "react";
-import cx from "classnames";
-import PropTypes from "prop-types";
+import React from "react"
+import cx from "classnames"
+import PropTypes from "prop-types"
 
 // material-ui components
-import withStyles from "material-ui/styles/withStyles";
-import Card from "material-ui/Card";
-import CardContent from "material-ui/Card/CardContent";
-import CardHeader from "material-ui/Card/CardHeader";
+import withStyles from "material-ui/styles/withStyles"
+import Card from "material-ui/Card"
+import CardContent from "material-ui/Card/CardContent"
+import CardHeader from "material-ui/Card/CardHeader"
 
-import iconCardStyle from "assets/jss/material-dashboard-pro-react/components/iconCardStyle.jsx";
+import iconCardStyle from "assets/jss/material-dashboard-pro-react/components/iconCardStyle.jsx"
 
 function IconCard({ ...props }) {
   const {
@@ -20,19 +20,19 @@ function IconCard({ ...props }) {
     footer,
     plain,
     customCardContentClass
-  } = props;
+  } = props
   const cardClasses =
     classes.card +
     " " +
     cx({
       [classes.cardPlain]: plain
-    });
+    })
   const cardContentClasses =
     classes.cardContent +
     " " +
     cx({
       [customCardContentClass]: customCardContentClass !== undefined
-    });
+    })
   return (
     <Card className={cardClasses}>
       <CardHeader
@@ -55,12 +55,12 @@ function IconCard({ ...props }) {
         <div className={classes.cardFooter}>{footer}</div>
       ) : null}
     </Card>
-  );
+  )
 }
 
 IconCard.defaultProps = {
-  iconColor: "green",
-};
+  iconColor: "green"
+}
 
 IconCard.propTypes = {
   classes: PropTypes.object.isRequired,
@@ -79,6 +79,6 @@ IconCard.propTypes = {
   footer: PropTypes.node,
   plain: PropTypes.bool,
   customCardContentClass: PropTypes.string
-};
+}
 
-export default withStyles(iconCardStyle)(IconCard);
+export default withStyles(iconCardStyle)(IconCard)

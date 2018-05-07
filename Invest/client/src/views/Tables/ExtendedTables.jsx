@@ -12,7 +12,7 @@ import Edit from "@material-ui/icons/Edit"
 import Close from "@material-ui/icons/Close"
 // import Check from "@material-ui/icons/Check"
 // import Remove from "@material-ui/icons/Remove"
-// import Add from "@material-ui/icons/Add"
+import Add from "@material-ui/icons/Add"
 // import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight"
 
 // core components
@@ -65,9 +65,15 @@ class ExtendedTables extends React.Component {
     return (
       <GridContainer>
         <ItemGrid xs={12}>
+          <Button
+            className="actions"
+            variant="flat"
+            style={{ backgroundColor: "#37B067" }}>
+            <Add />
+          </Button>
           <IconCard
             icon={Assignment}
-            iconColor="green"
+            iconColor="blue"
             title="Portfolio"
             content={
               <ReactTable
@@ -86,7 +92,7 @@ class ExtendedTables extends React.Component {
                           onClick={() => {
                             console.log(prop.id)
                           }}
-                          color="infoNoBackground"
+                          color="successNoBackground"
                           customClass={classes.actionButton}>
                           <Edit />
                         </IconButton>

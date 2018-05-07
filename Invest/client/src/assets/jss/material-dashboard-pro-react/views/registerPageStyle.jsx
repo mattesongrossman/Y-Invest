@@ -12,7 +12,6 @@ const registerPageStyle = {
     position: "relative",
     zIndex: "3",
     paddingTop: "15vh",
-    marginBottom: "250px",
     "@media (max-width: 850px)": {
       "justify-content": "flex-start"
     }
