@@ -59,6 +59,17 @@ const api = {
     })
   },
 
+  destroyInvestment(id) {
+    return fetch(`/investments/${id}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Token ${Auth.getToken()}`,
+        token: `${Auth.getToken()}`,
+        "Content-Type": "application/json"
+      }
+    })
+  },
+
   //CALLS TO API
   getNews() {
     return fetch(

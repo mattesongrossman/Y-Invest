@@ -21,7 +21,7 @@ import ItemGrid from "components/Grid/ItemGrid.jsx"
 import IconCard from "components/Cards/IconCard.jsx"
 // import Table from "components/Table/Table.jsx"
 import Button from "components/CustomButtons/Button.jsx"
-// import IconButton from "components/CustomButtons/IconButton.jsx"
+import IconButton from "components/CustomButtons/IconButton.jsx"
 
 import extendedTablesStyle from "assets/jss/material-dashboard-pro-react/views/extendedTablesStyle.jsx"
 
@@ -47,34 +47,14 @@ class ExtendedTables extends React.Component {
   }
 
   handleDestroy(evt) {
-    console.log(evt.target.value)
+    api.destroyInvestment(evt)
+    console.log("test")
   }
 
   render() {
     const { classes } = this.props
     const { portfolio } = this.state
     console.log(portfolio)
-    const fillButtons = [
-      // { color: "info", icon: Person },
-      { color: "success", icon: Edit, onClick: this.handleEdit },
-      {
-        color: "danger",
-        icon: Close,
-        onClick: this.handleDestroy,
-        accessor: "id"
-      }
-    ].map((prop, key) => {
-      return (
-        <Button
-          color={prop.color}
-          onClick={prop.onClick}
-          customClass={classes.actionButton}
-          value={prop.accessor}
-          key={key}>
-          <prop.icon className={classes.icon} />
-        </Button>
-      )
-    })
 
     return (
       <GridContainer>
@@ -87,19 +67,39 @@ class ExtendedTables extends React.Component {
               <ReactTable
                 data={this.state.portfolio.map((prop, key) => {
                   return {
-                    id: prop.id,
-                    investment_name: prop.security,
+                    id: key,
+                    security: prop.security,
                     quantity: prop.quantity,
                     purchase_date: prop.purchase_date,
                     price: prop.price,
                     value: Number(prop.quantity * prop.price),
-                    actions: fillButtons
+                    actions: (
+                      <div className="actions">
+                        {/* use this button to add a like kind of action */}
+                        <IconButton
+                          onClick={() => {
+                            console.log(prop.id)
+                          }}
+                          color="infoNoBackground"
+                          customClass={classes.actionButton}>
+                          <Edit />
+                        </IconButton>
+                        <IconButton
+                          onClick={() => {
+                            api.destroyInvestment(prop.id)
+                          }}
+                          color="dangerNoBackground"
+                          customClass="actions">
+                          <Close />
+                        </IconButton>
+                      </div>
+                    )
                   }
                 })}
                 columns={[
                   {
                     Header: "Investment",
-                    accessor: "investment_name"
+                    accessor: "security"
                   },
                   {
                     Header: "Quantity",

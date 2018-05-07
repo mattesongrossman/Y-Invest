@@ -32,8 +32,7 @@ class InvestmentsController < ApiController
 
   def destroy
     user = User.find_by_auth_token!(request.headers[:token])
-    user_investments = Investment.find(params[:id])
-    user_investments.destroy
+    Investment.destroy(params[:id])
   end
 
 
