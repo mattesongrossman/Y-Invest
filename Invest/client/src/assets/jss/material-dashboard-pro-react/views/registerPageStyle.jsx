@@ -2,21 +2,24 @@
 // // // RegisterPage view styles
 // #############################
 
-import { container } from "assets/jss/material-dashboard-pro-react.jsx";
+import { container } from "assets/jss/material-dashboard-pro-react.jsx"
 
-import customCheckboxRadioSwitch from "assets/jss/material-dashboard-pro-react/customCheckboxRadioSwitch.jsx";
+import customCheckboxRadioSwitch from "assets/jss/material-dashboard-pro-react/customCheckboxRadioSwitch.jsx"
 
 const registerPageStyle = {
   container: {
     ...container,
     position: "relative",
     zIndex: "3",
-    paddingTop: "15vh"
+    paddingTop: "15vh",
+    marginBottom: "250px",
+    "@media (max-width: 850px)": {
+      "justify-content": "flex-start"
+    }
   },
   cardClasses: {
     boxShadow:
       "0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)",
-    marginBottom: "100px",
     padding: "40px 0px"
   },
   center: {
@@ -38,7 +41,7 @@ const registerPageStyle = {
   inputAdornment: {
     marginRight: "18px",
     top: "18px",
-    position: "relative",
+    position: "relative"
   },
   inputAdornmentIcon: {
     color: "#555"
@@ -56,7 +59,7 @@ const registerPageStyle = {
   ...customCheckboxRadioSwitch,
   cardTitle: {
     fontSize: "2.6em"
-  },
-};
+  }
+}
 
-export default registerPageStyle;
+export default registerPageStyle

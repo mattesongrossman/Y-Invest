@@ -15,10 +15,24 @@ import {
   primaryColor,
   roseColor,
   boxShadow
-} from "assets/jss/material-dashboard-pro-react.jsx";
+} from "assets/jss/material-dashboard-pro-react.jsx"
 
 const imagePriceCardStyle = {
-  card,
+  //Custom card styling
+  card: {
+    display: "inline-block",
+    position: "relative",
+    width: "30%",
+    margin: "25px 0",
+    boxShadow: "0 1px 4px 0 rgba(0, 0, 0, 0.14)",
+    borderRadius: "6px",
+    color: "rgba(0, 0, 0, 0.87)",
+    background: "#fff",
+    "@media (max-width: 850px)": {
+      width: "100%",
+      height: "100%"
+    }
+  },
   cardHeader: {
     ...cardHeader,
     padding: "0",
@@ -127,6 +141,6 @@ const imagePriceCardStyle = {
     margin: "0 !important",
     padding: "0 !important"
   }
-};
+}
 
-export default imagePriceCardStyle;
+export default imagePriceCardStyle

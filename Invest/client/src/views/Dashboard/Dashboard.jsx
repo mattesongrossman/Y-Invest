@@ -59,8 +59,9 @@ class Dashboard extends React.Component {
           // <GridContainer justify="space-between">
           //   <ItemGrid xs={12} sm={12} md={4}>
           <ImagePriceCard
-            display="flex"
-            style={{maxWidth:"30%", flex:1, alignItems:"center", justifyContent:"center"}}
+            style={{
+              width: "30%"
+            }}
             image={news.urlToImage}
             title={news.title}
             text={news.description}
@@ -106,7 +107,16 @@ class Dashboard extends React.Component {
       }
     })
     return (
-      <ItemGrid xs={12} sm={12} md={4}>
+      <ItemGrid
+        xs={12}
+        sm={12}
+        md={4}
+        style={{
+          display: "flex",
+          "max-width": "100%",
+          "flex-direction": "row",
+          "flex-wrap": "wrap"
+        }}>
         {News}
       </ItemGrid>
     )
