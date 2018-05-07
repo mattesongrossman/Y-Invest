@@ -49,6 +49,12 @@ class ExtendedTables extends React.Component {
   handleDestroy(evt) {
     api.destroyInvestment(evt)
     console.log("test")
+    api.getPortfolios().then(portfolio => {
+      this.setState({
+        portfolio: portfolio.investments,
+        portfolioLoaded: true
+      })
+    })
   }
 
   render() {
@@ -86,7 +92,7 @@ class ExtendedTables extends React.Component {
                         </IconButton>
                         <IconButton
                           onClick={() => {
-                            api.destroyInvestment(prop.id)
+                            this.handleDestroy(prop.id)
                           }}
                           color="dangerNoBackground"
                           customClass="actions">
