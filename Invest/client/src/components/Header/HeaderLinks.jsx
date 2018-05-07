@@ -58,6 +58,7 @@ class HeaderLinks extends React.Component {
     // const managerClasses = classNames({
     //   [classes.managerClasses]: true
     // })
+
     return (
       <div className={wrapper}>
         <CustomInput
@@ -176,6 +177,7 @@ class HeaderLinks extends React.Component {
           </Popper>
         </Manager> */}
         <IconButton
+          // onClick={this.props.handleLogout}
           color="inherit"
           aria-label="Person"
           className={rtlActive ? classes.buttonLinkRTL : classes.buttonLink}

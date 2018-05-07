@@ -38,6 +38,7 @@ class App extends Component {
     // this.handleRegisterSubmit = this.handleRegisterSubmit.bind(this)
     this.handleLoginSubmit = this.handleLoginSubmit.bind(this)
     this.handleInputChange = this.handleInputChange.bind(this)
+    this.handleLogout = this.handleLogout.bind(this)
   }
   handleInputChange(e) {
     const name = e.target.name
@@ -74,6 +75,10 @@ class App extends Component {
       .catch(err => {
         console.log(err)
       })
+  }
+
+  handleLogout(e) {
+    console.log("logout test")
   }
 
   render() {

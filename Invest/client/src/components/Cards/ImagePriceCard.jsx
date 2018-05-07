@@ -1,26 +1,26 @@
-import React from "react";
-import PropTypes from "prop-types";
-import cx from "classnames";
+import React from "react"
+import PropTypes from "prop-types"
+import cx from "classnames"
 
 // material-ui components
-import withStyles from "material-ui/styles/withStyles";
-import Card from "material-ui/Card";
-import CardContent from "material-ui/Card/CardContent";
-import CardHeader from "material-ui/Card/CardHeader";
-import CardActions from "material-ui/Card/CardActions";
-import Typography from "material-ui/Typography";
+import withStyles from "material-ui/styles/withStyles"
+import Card from "material-ui/Card"
+import CardContent from "material-ui/Card/CardContent"
+import CardHeader from "material-ui/Card/CardHeader"
+import CardActions from "material-ui/Card/CardActions"
+import Typography from "material-ui/Typography"
 
 // core components
-import Button from "components/CustomButtons/Button";
+import Button from "components/CustomButtons/Button"
 
-import imagePriceCardStyle from "assets/jss/material-dashboard-pro-react/components/imagePriceCardStyle.jsx";
+import imagePriceCardStyle from "assets/jss/material-dashboard-pro-react/components/imagePriceCardStyle.jsx"
 
 class ImagePriceCard extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       hover: false
-    };
+    }
   }
   render() {
     const {
@@ -34,20 +34,20 @@ class ImagePriceCard extends React.Component {
       statText,
       underImage,
       hover
-    } = this.props;
+    } = this.props
     const cardHeaderClasses =
       classes.cardHeader +
       cx({
         [" " + classes.moveImageUp]: this.state.hover && hover
-      });
-    var addHoverEvent = {};
+      })
+    var addHoverEvent = {}
     if (hover) {
       if (navigator.userAgent.match(/iPad/i) != null) {
         addHoverEvent.onClick = () =>
-          this.setState({ hover: !this.state.hover });
+          this.setState({ hover: !this.state.hover })
       } else {
-        addHoverEvent.onMouseEnter = () => this.setState({ hover: true });
-        addHoverEvent.onMouseLeave = () => this.setState({ hover: false });
+        addHoverEvent.onMouseEnter = () => this.setState({ hover: true })
+        addHoverEvent.onMouseLeave = () => this.setState({ hover: false })
       }
     }
     return (
@@ -67,8 +67,7 @@ class ImagePriceCard extends React.Component {
           <Typography
             variant="title"
             component="h4"
-            className={classes.cardTitle}
-          >
+            className={classes.cardTitle}>
             {title}
           </Typography>
           <Typography component="p" className={classes.cardCategory}>
@@ -97,13 +96,13 @@ class ImagePriceCard extends React.Component {
           </div>
         </CardActions>
       </Card>
-    );
+    )
   }
 }
 
 ImagePriceCard.defaultProps = {
-  hover: false,
-};
+  hover: false
+}
 
 ImagePriceCard.propTypes = {
   classes: PropTypes.object.isRequired,
@@ -128,6 +127,6 @@ ImagePriceCard.propTypes = {
   hover: PropTypes.bool,
   // what to be displayed under tha chart on hover
   underImage: PropTypes.node
-};
+}
 
-export default withStyles(imagePriceCardStyle)(ImagePriceCard);
+export default withStyles(imagePriceCardStyle)(ImagePriceCard)

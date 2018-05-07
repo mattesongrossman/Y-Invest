@@ -57,15 +57,12 @@ class Dashboard extends React.Component {
       if (news.urlToImage) {
         return (
           <ImagePriceCard
-            style={{
-              width: "30%"
-            }}
             image={news.urlToImage}
             title={news.title}
             text={news.description}
             price={news.source.name}
             statIcon={Timeline}
-            statText={news.publishedAt}
+            statLink={{ text: news.publishedAt, href: news.url }}
           />
         )
       }
@@ -77,9 +74,9 @@ class Dashboard extends React.Component {
         md={4}
         style={{
           display: "flex",
-          "max-width": "100%",
-          "flex-direction": "row",
-          "flex-wrap": "wrap"
+          maxWidth: "100%",
+          flexDirection: "row",
+          flexWrap: "wrap"
         }}>
         {News}
       </ItemGrid>

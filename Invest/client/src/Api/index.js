@@ -59,6 +59,18 @@ const api = {
     })
   },
 
+  editInvestment(id) {
+    return fetch(`investments/${id}`, {
+      method: "PUT",
+      body: JSON.stringify(),
+      headers: {
+        Authorization: `Token ${Auth.getToken()}`,
+        token: `${Auth.getToken()}`,
+        "Content-Type": "application/json"
+      }
+    })
+  },
+
   destroyInvestment(id) {
     return fetch(`/investments/${id}`, {
       method: "DELETE",
