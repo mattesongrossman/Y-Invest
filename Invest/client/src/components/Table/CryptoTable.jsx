@@ -16,6 +16,8 @@ import Button from "material-ui/Button"
 import { Redirect } from "react-router"
 
 import api from "../../Api"
+import withStyles from "material-ui/styles/withStyles"
+import modalStyle from "assets/jss/material-dashboard-pro-react/modalStyle.jsx"
 import TextField from "material-ui/TextField"
 import Dialog, {
   DialogActions,
@@ -89,14 +91,13 @@ class CryptoTable extends React.Component {
   //creates portfolio
   addPortfolioItem(evt) {
     evt.preventDefault()
-    const { security, quantity, purchase_date, price, date } = this.state
+    const { security, quantity, purchase_date, price } = this.state
     console.log("test")
     const body = {
       security: security,
       quantity: quantity,
-      purchase_date: purchase_date,
       price: price,
-      date: date
+      purchase_date: purchase_date
     }
     api.addPortfolioItem(body).then(response => {
       this.setState({
@@ -125,7 +126,11 @@ class CryptoTable extends React.Component {
                     symbol: prop.symbol,
                     name: prop.name,
                     price: `$ ` + prop.price_usd,
-                    percent_change_24h: prop.percent_change_24h,
+                    percent_change_24h: Number(
+                      prop.percent_change_24h
+                    ).toLocaleString({
+                      style: "percent"
+                    }),
                     rank: Number(prop.rank),
                     market_cap: Number(prop.market_cap_usd).toLocaleString(),
                     action: (
@@ -275,4 +280,4 @@ class CryptoTable extends React.Component {
   }
 }
 
-export default CryptoTable
+export default withStyles(modalStyle)(CryptoTable)

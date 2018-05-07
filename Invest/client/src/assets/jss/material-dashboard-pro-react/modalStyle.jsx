@@ -76,6 +76,6 @@ const modalStyle = {
     marginBottom: "0",
     marginLeft: "5px"
   }
-};
+}
 
-export default modalStyle;
+export default modalStyle

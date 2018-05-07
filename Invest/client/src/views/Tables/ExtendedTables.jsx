@@ -63,8 +63,8 @@ class ExtendedTables extends React.Component {
   render() {
     const { classes } = this.props
     const { portfolio } = this.state
-    console.log(portfolio)
-    console.log(Auth.isUserAuthenticated())
+    // console.log(portfolio)
+    console.log("Auth:?" + Auth.isUserAuthenticated())
 
     return this.state.auth ? (
       <GridContainer>
@@ -82,16 +82,29 @@ class ExtendedTables extends React.Component {
             content={
               <ReactTable
                 data={this.state.portfolio.map((prop, key) => {
+                  // console.log(
+                  //   prop.security + " - " + prop.quantity * prop.price
+                  // )
+                  const nPrice = Number(prop.price)
+                  const nQuant = Number(prop.quantity)
+                  console.log(
+                    "price: " + typeof nPrice + " quant: " + typeof nQuant
+                  )
+                  const value = nPrice * nQuant
+                  console.log("const val", value)
                   return {
                     id: key,
                     security: prop.security,
                     quantity: prop.quantity,
-                    purchase_date: prop.purchase_date,
+                    purchase_date: new Date(
+                      prop.purchase_date
+                    ).toLocaleDateString(),
                     price: prop.price,
-                    value: Number(prop.quantity * prop.price),
+                    value: value.toLocaleString(),
                     actions: (
                       <div className="actions">
                         {/* use this button to add a like kind of action */}
+
                         <IconButton
                           onClick={() => {
                             console.log(prop.id)
@@ -131,7 +144,7 @@ class ExtendedTables extends React.Component {
                   },
                   {
                     Header: "Value",
-                    accessor: "price"
+                    accessor: "value"
                   },
                   {
                     Header: "Actions",

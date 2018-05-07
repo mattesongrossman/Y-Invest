@@ -3,6 +3,10 @@ import React from "react"
 import CryptoTable from "components/Table/CryptoTable.jsx"
 import StockTable from "components/Table/StockTable.jsx"
 
+import withStyles from "material-ui/styles/withStyles"
+
+import modalStyle from "assets/jss/material-dashboard-pro-react/modalStyle.jsx"
+
 class ReactTables extends React.Component {
   render() {
     return (
@@ -14,4 +18,4 @@ class ReactTables extends React.Component {
   }
 }
 
-export default ReactTables
+export default withStyles(modalStyle)(ReactTables)

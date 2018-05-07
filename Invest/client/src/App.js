@@ -101,10 +101,10 @@ class App extends Component {
                   handleLoginSubmit={this.handleLoginSubmit}
                 />
               ) : (
-                (setTimeout(function() {
-                  alert("Already logged in")
-                }, 500),
-                <Redirect to="/dashboard" />)
+                <div>
+                  (setTimeout(function() {alert("Already logged in")}, 500),
+                  <Redirect to="/dashboard" />)
+                </div>
               )
             }
           />

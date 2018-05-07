@@ -12,6 +12,7 @@ import ItemGrid from "components/Grid/ItemGrid.jsx"
 import IconCard from "components/Cards/IconCard.jsx"
 // import IconButton from "components/CustomButtons/IconButton.jsx"
 import Button from "material-ui/Button"
+import { Redirect } from "react-router"
 
 import api from "../../Api"
 import TextField from "material-ui/TextField"
@@ -27,8 +28,16 @@ class StockTables extends React.Component {
     super(props)
     this.state = {
       stock: [],
-      open: false
+      open: false,
+      security: "",
+      quantity: null,
+      purchase_date: "",
+      price: "",
+      createdPortfolio: false,
+      redirect: false
     }
+    this.handleChange = this.handleChange.bind(this)
+    this.addPortfolioItem = this.addPortfolioItem.bind(this)
   }
   handleOpen = () => {
     this.setState({ open: true })
@@ -68,7 +77,37 @@ class StockTables extends React.Component {
     return {}
   }
 
+  //handles input change on TextField
+  handleChange(evt) {
+    let val = evt.target.value
+    let input = evt.target.name
+    this.setState({
+      [input]: val
+    })
+  }
+  //creates portfolio
+  addPortfolioItem(evt) {
+    evt.preventDefault()
+    const { security, quantity, purchase_date, price } = this.state
+    console.log("test")
+    const body = {
+      security: security,
+      quantity: quantity,
+      purchase_date: purchase_date,
+      price: price
+    }
+    api.addPortfolioItem(body).then(response => {
+      this.setState({
+        createdPortfolio: true,
+        redirect: true
+      })
+    })
+  }
+
   render() {
+    if (this.state.redirect) {
+      return <Redirect to="/portfolio" />
+    }
     // let { stock } = this.state
     return (
       <GridContainer>
@@ -84,9 +123,11 @@ class StockTables extends React.Component {
                     symbol: prop[0],
                     name: prop[1],
                     price: `$ ` + prop[11].toFixed(2),
-                    percent_change_24h: (prop[23] * 100).toLocaleString({
-                      style: "percent"
-                    }),
+                    percent_change_24h: (Number(prop[23]) * 100).toLocaleString(
+                      {
+                        style: "percent"
+                      }
+                    ),
                     YTD_Change: (prop[35] * 100).toLocaleString({
                       style: "percent"
                     }),
@@ -110,32 +151,44 @@ class StockTables extends React.Component {
                             <DialogContentText>
                               Add Investment
                             </DialogContentText>
-                            <TextField
-                              autoFocus
-                              id="investment"
-                              label="Investment Name"
-                              // value={stock.map((prop, index) => {
-                              //     return <ReactTable key={index} data={prop.name} />
-                              // })}
-                              type="text"
-                              fullWidth
-                            />
-                            <TextField
-                              autoFocus
-                              id="quantity"
-                              label="Quantity"
-                              type="number"
-                            />
-                            <br />
-                            <TextField
-                              autoFocus
-                              id="price"
-                              label="Price"
-                              type="number"
-                            />
-                            <br />
-                            <br />
-                            <TextField autoFocus id="date" type="date" />
+                            <form id="addItem" onSubmit={this.addPortfolioItem}>
+                              <TextField
+                                onChange={this.handleChange}
+                                autoFocus
+                                name="security"
+                                id="investment"
+                                label="Investment Name"
+                                // value=""
+                                type="text"
+                                fullWidth
+                              />
+                              <TextField
+                                onChange={this.handleChange}
+                                autoFocus
+                                name="quantity"
+                                id="quantity"
+                                label="Quantity"
+                                type="number"
+                              />
+                              <br />
+                              <TextField
+                                onChange={this.handleChange}
+                                name="price"
+                                autoFocus
+                                id="price"
+                                label="Price"
+                                type="number"
+                              />
+                              <br />
+                              <br />
+                              <TextField
+                                onChange={this.handleChange}
+                                name="purchase_date"
+                                autoFocus
+                                id="date"
+                                type="date"
+                              />
+                            </form>
                           </DialogContent>
                           <DialogActions>
                             <Button
@@ -145,9 +198,10 @@ class StockTables extends React.Component {
                               Cancel
                             </Button>
                             <Button
-                              onClick={this.handleClose}
+                              type="submit"
                               variant="raised"
-                              color="primary">
+                              color="primary"
+                              form="addItem">
                               Submit
                             </Button>
                           </DialogActions>
@@ -172,11 +226,13 @@ class StockTables extends React.Component {
                   {
                     Header: "Price",
                     accessor: "price",
-                    filterable: false
+                    filterable: false,
+                    sortable: false
                   },
                   {
                     Header: "24H Change",
                     accessor: "percent_change_24h",
+                    sortable: false,
                     filterable: false,
                     getProps: (state, rowInfo, column) => {
                       if (rowInfo) {
@@ -196,6 +252,7 @@ class StockTables extends React.Component {
                     Header: "YTD Change",
                     accessor: "YTD_Change",
                     filterable: false,
+                    sortable: false,
                     getProps: (state, rowInfo, column) => {
                       if (rowInfo) {
                         return {
