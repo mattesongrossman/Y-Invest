@@ -23,7 +23,7 @@ import Charts from "views/Charts/Charts.jsx"
 // import TimelinePage from "views/Pages/Timeline.jsx"
 // import RTLSupport from "views/Pages/RTLSupport.jsx"
 
-// import pagesRoutes from "./pages.jsx"
+import pagesRoutes from "./pages.jsx"
 
 // @material-ui/icons
 import DashboardIcon from "@material-ui/icons/Dashboard"
@@ -42,34 +42,33 @@ import RegisterPage from "views/Pages/RegisterPage.jsx"
 import LoginForm from "views/Pages/LoginPage.jsx"
 import Fingerprint from "@material-ui/icons/Fingerprint"
 
-// var pages = [
-//   // {
-//   //   collapse: true,
-//   //   name: "Pages",
-//   //   icon: ContentPaste,
-//   //   views: [
-//   // {
-//   {
-//     path: "/register",
-//     name: "Register",
-//     mini: "RP",
-//     component: RegisterPage
-//   },
-//   {
-//     path: "/login",
-//     name: "Login",
-//     short: "Login",
-//     mini: "LP",
-//     icon: Fingerprint,
-//     component: LoginForm
-//   }
-//   //     {
-//   //       path: "/forms/extended-forms",
-//   //       name: "Extended Forms",
-//   //       mini: "EF",
-//   //       component: ExtendedForms
-//   //     },
-// ]
+var pages = [
+  //   //   collapse: true,
+  //   //   name: "Pages",
+  //   //   icon: ContentPaste,
+  //   //   views: [
+  //   // {
+  //   {
+  //     path: "/register",
+  //     name: "Register",
+  //     mini: "RP",
+  //     component: RegisterPage
+  //   },
+  //   {
+  //     path: "/login",
+  //     name: "Login",
+  //     short: "Login",
+  //     mini: "LP",
+  //     icon: Fingerprint,
+  //     component: LoginForm
+  //   }
+  //   //     {
+  //   //       path: "/forms/extended-forms",
+  //   //       name: "Extended Forms",
+  //   //       mini: "EF",
+  //   //       component: ExtendedForms
+  //   //     },
+].concat(pagesRoutes)
 
 var dashRoutes = [
   {
@@ -79,27 +78,23 @@ var dashRoutes = [
     component: Dashboard
   },
   {
-    path: "/register",
-    name: "Register",
-    icon: Image,
-    component: RegisterPage
-  },
-  {
-    path: "/login",
-    name: "Login",
+    collapse: true,
+    path: "-page",
+    name: "Pages",
+    state: "openPages",
     icon: Fingerprint,
-    component: LoginForm
+    views: pages
   },
   {
     path: "/table",
     name: "Investment Hub",
-    icon: GridOn,
+    icon: Timeline,
     component: ReactTables
   },
   {
     path: "/portfolio",
     name: "Portfolio",
-    icon: Timeline,
+    icon: GridOn,
     component: ExtendedTables
   },
   {

@@ -162,7 +162,7 @@ class ExtendedTables extends React.Component {
         </ItemGrid>
       </GridContainer>
     ) : (
-      <Redirect to="/login" />
+      <Redirect to="/pages/login" />
     )
   }
 }
