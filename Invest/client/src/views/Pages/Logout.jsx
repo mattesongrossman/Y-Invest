@@ -44,7 +44,7 @@ class Logout extends React.Component {
       }),
       <Redirect to="/dashboard" />)
     ) : (
-      <Redirect to="/dashboard" />
+      <Redirect to="/pages/login" />
     )
   }
 }

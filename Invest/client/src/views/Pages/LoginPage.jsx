@@ -18,6 +18,7 @@ import CustomInput from "components/CustomInput/CustomInput.jsx"
 import Button from "components/CustomButtons/Button.jsx"
 
 import loginPageStyle from "assets/jss/material-dashboard-pro-react/views/loginPageStyle.jsx"
+import { Redirect } from "react-router-dom"
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -88,7 +89,12 @@ class LoginPage extends React.Component {
     const loginUser = this.loginUser
     const auth = this.state
 
-    return (
+    return this.state.auth ? (
+      (setTimeout(function() {
+        alert("Logged in")
+      }, 500),
+      <Redirect to="/dashboard" />)
+    ) : (
       <div className={classes.content}>
         <div className={classes.container}>
           <GridContainer justify="center">
