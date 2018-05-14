@@ -79,9 +79,9 @@ class RegisterPage extends React.Component {
       <div className={classes.container}>
         <GridContainer>
           <ItemGrid
-            xs={10}
-            sm={10}
-            md={8}
+            xs={12}
+            sm={12}
+            md={10}
             style={{ maxWidth: "100%", alignItems: "center" }}>
             <RegularCard
               cardTitle="Register"
@@ -95,7 +95,7 @@ class RegisterPage extends React.Component {
                     flexFlow: "wrap",
                     justifyContent: "center"
                   }}>
-                  <ItemGrid xs={8} sm={8} md={6}>
+                  <ItemGrid xs={12} sm={8} md={5}>
                     <div
                       style={{
                         flexFlow: "wrap",

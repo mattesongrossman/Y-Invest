@@ -11,14 +11,12 @@ const registerPageStyle = {
     ...container,
     position: "relative",
     zIndex: "3",
-    paddingTop: "15vh",
-    "@media (max-width: 850px)": {
-      "justify-content": "flex-start"
-    }
+    paddingTop: "15vh"
   },
   cardClasses: {
     boxShadow:
       "0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.2)",
+    marginBottom: "100px",
     padding: "40px 0px"
   },
   center: {
