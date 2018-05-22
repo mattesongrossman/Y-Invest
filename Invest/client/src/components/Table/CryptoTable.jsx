@@ -34,7 +34,7 @@ class CryptoTable extends React.Component {
       open: false,
       security: "",
       quantity: null,
-      purchase_date: "",
+      purchase_date: new Date(Date.now()).toLocaleString(),
       price: "",
       createdPortfolio: false,
       redirect: false
@@ -43,8 +43,15 @@ class CryptoTable extends React.Component {
     this.addPortfolioItem = this.addPortfolioItem.bind(this)
   }
 
-  handleOpen = () => {
-    this.setState({ open: true })
+  handleOpen = evt => {
+    let val = evt.target.value
+    console.log(val)
+    let cryptoVal = this.state.crypto[val]
+    this.setState({
+      open: true
+      // security: cryptoVal.name,
+      // price: cryptoVal.price
+    })
   }
   handleClose = () => {
     this.setState({ open: false })
@@ -111,7 +118,6 @@ class CryptoTable extends React.Component {
     if (this.state.redirect) {
       return <Redirect to="/portfolio" />
     }
-    console.log(this.state.security)
     return (
       <GridContainer>
         <ItemGrid xs={12}>
@@ -122,7 +128,7 @@ class CryptoTable extends React.Component {
               <ReactTable
                 data={this.state.crypto.map((prop, key) => {
                   return {
-                    id: prop.id,
+                    id: key,
                     symbol: prop.symbol,
                     name: prop.name,
                     price: `$ ` + prop.price_usd,
@@ -138,8 +144,10 @@ class CryptoTable extends React.Component {
                         <Button
                           onClick={this.handleOpen}
                           variant="raised"
-                          color="primary">
-                          <PlaylistAdd />
+                          color="primary"
+                          value={key}>
+                          {/* <PlaylistAdd /> */}
+                          +
                         </Button>
                         <Dialog
                           open={this.state.open}
@@ -156,6 +164,7 @@ class CryptoTable extends React.Component {
                               <TextField
                                 onChange={this.handleChange}
                                 autoFocus
+                                value={this.state.security}
                                 name="security"
                                 id="investment"
                                 label="Investment Name"
@@ -175,6 +184,7 @@ class CryptoTable extends React.Component {
                               <TextField
                                 onChange={this.handleChange}
                                 name="price"
+                                value={this.state.price}
                                 autoFocus
                                 id="price"
                                 label="Price"
@@ -185,6 +195,7 @@ class CryptoTable extends React.Component {
                               <TextField
                                 onChange={this.handleChange}
                                 name="purchase_date"
+                                value={this.state.purchase_date}
                                 autoFocus
                                 id="date"
                                 type="date"

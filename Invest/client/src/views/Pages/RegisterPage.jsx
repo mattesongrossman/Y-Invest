@@ -56,7 +56,6 @@ class RegisterPage extends React.Component {
   createUser(evt) {
     evt.preventDefault()
     const { email, password, username, name } = this.state
-    console.log("test")
     const body = {
       user: {
         username: username,
@@ -66,17 +65,22 @@ class RegisterPage extends React.Component {
       }
     }
     api.createUser(body).then(response => {
-      console.log(response)
       this.setState({
-        createdUser: true
+        createdUser: true,
+        username: "",
+        password: "",
+        email: "",
+        name: ""
       })
     })
+    alert("User registered, please proceed to login")
   }
 
   render() {
     const { classes } = this.props
     const handleChange = this.handleChange
     const createUser = this.createUser
+
     return (
       <div className={classes.container}>
         <GridContainer>
@@ -128,7 +132,7 @@ class RegisterPage extends React.Component {
                             className: classes.customFormControlClasses
                           }}
                           inputProps={{
-                            // type: "password",
+                            type: "password",
                             onChange: handleChange,
                             name: "password",
                             startAdornment: (

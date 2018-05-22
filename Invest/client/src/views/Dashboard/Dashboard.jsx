@@ -57,12 +57,14 @@ class Dashboard extends React.Component {
       if (news.urlToImage) {
         return (
           <ImagePriceCard
+            key={index}
             image={news.urlToImage}
             title={news.title}
             text={news.description}
             price={news.source.name}
             statIcon={Timeline}
-            statLink={{ text: news.publishedAt, href: news.url }}
+            link={news.url}
+            statText={news.publishedAt}
           />
         )
       }

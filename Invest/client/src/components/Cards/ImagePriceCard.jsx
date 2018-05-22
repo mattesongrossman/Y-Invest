@@ -33,6 +33,7 @@ class ImagePriceCard extends React.Component {
       statLink,
       statText,
       underImage,
+      link,
       hover
     } = this.props
     const cardHeaderClasses =
@@ -66,8 +67,9 @@ class ImagePriceCard extends React.Component {
           ) : null}
           <Typography
             variant="title"
-            component="h4"
-            className={classes.cardTitle}>
+            component="a"
+            className={classes.cardTitle}
+            href={link}>
             {title}
           </Typography>
           <Typography component="p" className={classes.cardCategory}>

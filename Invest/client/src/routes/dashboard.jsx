@@ -27,7 +27,7 @@ import pagesRoutes from "./pages.jsx"
 
 // @material-ui/icons
 import DashboardIcon from "@material-ui/icons/Dashboard"
-import Image from "@material-ui/icons/Image"
+// import Image from "@material-ui/icons/Image"
 // import Apps from "@material-ui/icons/Apps"
 // import ContentPaste from "@material-ui/icons/ContentPaste"
 import GridOn from "@material-ui/icons/GridOn"
@@ -38,8 +38,8 @@ import InsertChart from "@material-ui/icons/InsertChart"
 // import DateRange from "@material-ui/icons/DateRange"
 
 // import Homepage from "views/Homepage"
-import RegisterPage from "views/Pages/RegisterPage.jsx"
-import LoginForm from "views/Pages/LoginPage.jsx"
+// import RegisterPage from "views/Pages/RegisterPage.jsx"
+// import LoginForm from "views/Pages/LoginPage.jsx"
 import Fingerprint from "@material-ui/icons/Fingerprint"
 
 var pages = [
@@ -80,7 +80,7 @@ var dashRoutes = [
   {
     collapse: true,
     path: "-page",
-    name: "Pages",
+    name: "User Actions",
     state: "openPages",
     icon: Fingerprint,
     views: pages

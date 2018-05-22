@@ -18,6 +18,7 @@ import Person from "@material-ui/icons/Person"
 // import Notifications from "@material-ui/icons/Notifications"
 // import Dashboard from "@material-ui/icons/Dashboard"
 import Search from "@material-ui/icons/Search"
+import LockOpen from "@material-ui/icons/LockOpen"
 
 // core components
 import CustomInput from "components/CustomInput/CustomInput.jsx"
@@ -177,7 +178,6 @@ class HeaderLinks extends React.Component {
           </Popper>
         </Manager> */}
         <IconButton
-          // onClick={this.props.handleLogout}
           color="inherit"
           aria-label="Person"
           className={rtlActive ? classes.buttonLinkRTL : classes.buttonLink}
@@ -185,6 +185,24 @@ class HeaderLinks extends React.Component {
             label: rtlActive ? classes.labelRTL : ""
           }}>
           <Person
+            className={
+              rtlActive ? classes.links + " " + classes.linksRTL : classes.links
+            }
+          />
+          <Hidden mdUp>
+            <p className={classes.linkText}>
+              {rtlActive ? "الملف الشخصي" : "Profile"}
+            </p>
+          </Hidden>
+        </IconButton>
+        <IconButton
+          color="inherit"
+          aria-label="Person"
+          className={rtlActive ? classes.buttonLinkRTL : classes.buttonLink}
+          classes={{
+            label: rtlActive ? classes.labelRTL : ""
+          }}>
+          <LockOpen
             className={
               rtlActive ? classes.links + " " + classes.linksRTL : classes.links
             }

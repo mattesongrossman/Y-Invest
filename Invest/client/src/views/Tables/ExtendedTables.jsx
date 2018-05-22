@@ -1,5 +1,5 @@
 import React from "react"
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom"
+import { Redirect } from "react-router-dom"
 
 import ReactTable from "react-table"
 // material-ui components
@@ -62,7 +62,7 @@ class ExtendedTables extends React.Component {
 
   render() {
     const { classes } = this.props
-    const { portfolio } = this.state
+    // const { portfolio } = this.state
     // console.log(portfolio)
     console.log("Auth:?" + Auth.isUserAuthenticated())
 

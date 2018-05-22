@@ -6,7 +6,7 @@ import withStyles from "material-ui/styles/withStyles"
 import InputAdornment from "material-ui/Input/InputAdornment"
 
 // @material-ui/icons
-import Face from "@material-ui/icons/Face"
+// import Face from "@material-ui/icons/Face"
 import Email from "@material-ui/icons/Email"
 import LockOutline from "@material-ui/icons/LockOutline"
 
@@ -86,8 +86,8 @@ class LoginPage extends React.Component {
     const { classes } = this.props
     const handleChange = this.handleChange
     const handleLoginSubmit = this.handleLoginSubmit
-    const loginUser = this.loginUser
-    const auth = this.state
+    // const loginUser = this.loginUser
+    // const auth = this.state
 
     return this.state.auth ? (
       (setTimeout(function() {
