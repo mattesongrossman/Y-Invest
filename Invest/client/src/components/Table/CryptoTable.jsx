@@ -34,7 +34,7 @@ class CryptoTable extends React.Component {
       open: false,
       security: "",
       quantity: null,
-      purchase_date: new Date(Date.now()).toLocaleString(),
+      purchase_date: "2018-05-21",
       price: "",
       createdPortfolio: false,
       redirect: false
@@ -44,15 +44,13 @@ class CryptoTable extends React.Component {
   }
 
   handleOpen = evt => {
-    let val = evt.target.value
-    console.log(val)
-    let cryptoVal = this.state.crypto[val]
     this.setState({
-      open: true
-      // security: cryptoVal.name,
-      // price: cryptoVal.price
+      open: true,
+      security: evt.name,
+      price: evt.price_usd
     })
   }
+
   handleClose = () => {
     this.setState({ open: false })
   }
@@ -142,12 +140,15 @@ class CryptoTable extends React.Component {
                     action: (
                       <div className="actions">
                         <Button
-                          onClick={this.handleOpen}
+                          onClick={() => {
+                            let obj = this.state.crypto.find(
+                              o => o.symbol === prop.symbol
+                            )
+                            this.handleOpen(obj)
+                          }}
                           variant="raised"
-                          color="primary"
-                          value={key}>
-                          {/* <PlaylistAdd /> */}
-                          +
+                          color="primary">
+                          <PlaylistAdd />
                         </Button>
                         <Dialog
                           open={this.state.open}
