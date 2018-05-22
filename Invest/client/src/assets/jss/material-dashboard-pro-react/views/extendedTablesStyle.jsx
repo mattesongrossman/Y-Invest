@@ -1,11 +1,11 @@
 // ##############################
-// // // ExtendedTables view styles
+// // // PortfolioTable view styles
 // #############################
 
 import buttonGroupStyle from "assets/jss/material-dashboard-pro-react/buttonGroupStyle.jsx";
 import { primaryColor } from "assets/jss/material-dashboard-pro-react.jsx";
 
-const extendedTablesStyle = {
+const PortfolioTableStyle = {
   right: {
     textAlign: "right"
   },
@@ -95,4 +95,4 @@ const extendedTablesStyle = {
   }
 };
 
-export default extendedTablesStyle;
+export default PortfolioTableStyle;

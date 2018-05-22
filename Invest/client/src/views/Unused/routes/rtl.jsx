@@ -11,8 +11,8 @@
 // import ValidationForms from "views/Forms/ValidationForms.jsx";
 // import Wizard from "views/Forms/Wizard.jsx";
 // import RegularTables from "views/Tables/RegularTables.jsx";
-// import ExtendedTables from "views/Tables/ExtendedTables.jsx";
-// import ReactTables from "views/Tables/ReactTables.jsx";
+// import PortfolioTable from "views/Tables/PortfolioTable.jsx";
+// import InvestmentTables from "views/Tables/InvestmentTables.jsx";
 // import GoogleMaps from "views/Maps/GoogleMaps.jsx";
 // import FullScreenMap from "views/Maps/FullScreenMap.jsx";
 // import VectorMap from "views/Maps/VectorMap.jsx";
@@ -225,13 +225,13 @@
 //         path: "/tables/extended-tables",
 //         name: "الجداول الموسعة",
 //         mini: "هور",
-//         component: ExtendedTables
+//         component: PortfolioTable
 //       },
 //       {
 //         path: "/tables/react-tables",
 //         name: "رد فعل الجداول",
 //         mini: "غ",
-//         component: ReactTables
+//         component: InvestmentTables
 //       }
 //     ]
 //   },

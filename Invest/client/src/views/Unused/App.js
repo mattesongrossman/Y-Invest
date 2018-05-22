@@ -9,8 +9,8 @@
 // // import pagesRoutes from "routes/pages.jsx"
 // // import indexRoutes from "routes/index.jsx"
 // //
-// // import ExtendedTables from "views/Tables/ExtendedTables.jsx"
-// // import ReactTables from "views/Tables/ReactTables.jsx"
+// // import PortfolioTable from "views/Tables/PortfolioTable.jsx"
+// // import InvestmentTables from "views/Tables/InvestmentTables.jsx"
 // // import Charts from "views/Charts/Charts.jsx"
 // // import LoginPage from "views/Pages/LoginPage.jsx"
 // import LoginForm from "views/Pages/LoginPage.jsx"

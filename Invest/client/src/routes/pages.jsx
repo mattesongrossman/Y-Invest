@@ -6,7 +6,6 @@ import RegisterPage from "views/Pages/RegisterPage.jsx"
 // @material-ui/icons
 import PersonAdd from "@material-ui/icons/PersonAdd"
 import Fingerprint from "@material-ui/icons/Fingerprint"
-// import MonetizationOn from "@material-ui/icons/MonetizationOn"
 import LockOpen from "@material-ui/icons/LockOpen"
 
 const pagesRoutes = [

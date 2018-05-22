@@ -1,5 +1,6 @@
 # [Material Dashboard PRO React - Premium Material-UI Design Admin](https://timecreative.github.io/material-dashboard-pro-react/)
-[![version][version-badge]][CHANGELOG]
+
+[![version][version-badge]][changelog]
 
 ![alt text](https://s3.amazonaws.com/creativetim_bucket/products/80/original/opt_mdpr_thumbnail.jpg "Material Dashboard PRO React")
 
@@ -12,49 +13,50 @@ Material Dashboard PRO React comes with 7 color filter choices for the links of 
 Material Dashboard PRO React uses a framework built by our friend [Olivier - Material-UI](https://github.com/mui-org/material-ui), who did an amazing job creating the backbone for the material effects, animations, ripples and transitions. Big thanks to his team for the effort and forward thinking they put into it.
 
 Special thanks go to:
-+ [Perfect-scrollbar](https://github.com/utatti/perfect-scrollbar) for the slim and beautiful scrollbars.
-+ [React-chartist](https://github.com/fraserxu/react-chartist) for the wonderful charts.
-+ [React-datetime](https://github.com/YouCanBookMe/react-datetime) for the easy to use date and time pickers.
-+ [React-big-calendar](https://github.com/intljusticemission/react-big-calendar) for the a wonderful calendar.
-+ [React-bootstrap-sweetalert](https://github.com/djorg83/react-bootstrap-sweetalert) for the wonderful alerts.
-+ [React-google-maps](https://github.com/tomchentw/react-google-maps) for the nice and easy to use map components.
-+ [React-jvectormap](https://github.com/kadoshms/react-jvectormap) for the nice vector map components.
-+ [React-nouislider](https://github.com/algolia/react-nouislider) for the nice and clean slider.
-+ [React-tables](https://react-table.js.org/#/story/simple-table) for the nice and clean slider.
-+ [React-tagsinput](https://github.com/olahol/react-tagsinput) for the easy and beatiful to use tags components.
+
+* [Perfect-scrollbar](https://github.com/utatti/perfect-scrollbar) for the slim and beautiful scrollbars.
+* [React-chartist](https://github.com/fraserxu/react-chartist) for the wonderful charts.
+* [React-datetime](https://github.com/YouCanBookMe/react-datetime) for the easy to use date and time pickers.
+* [React-big-calendar](https://github.com/intljusticemission/react-big-calendar) for the a wonderful calendar.
+* [React-bootstrap-sweetalert](https://github.com/djorg83/react-bootstrap-sweetalert) for the wonderful alerts.
+* [React-google-maps](https://github.com/tomchentw/react-google-maps) for the nice and easy to use map components.
+* [React-jvectormap](https://github.com/kadoshms/react-jvectormap) for the nice vector map components.
+* [React-nouislider](https://github.com/algolia/react-nouislider) for the nice and clean slider.
+* [React-tables](https://react-table.js.org/#/story/simple-table) for the nice and clean slider.
+* [React-tagsinput](https://github.com/olahol/react-tagsinput) for the easy and beatiful to use tags components.
 
 ## Links:
 
-+ [Live Preview](https://timcreative.github.io/material-dashboard-pro-react/)
-+ [Material Dashboard Free React]((https://creativetimofficial.github.io/material-dashboard-react/)
-+ [Material Dashboard PRO BS4 Html](https://demos.creative-tim.com/material-dashboard-pro/examples/dashboard.html)
-+ [Material Dashboard PRO BS3 Html](http://demos.creative-tim.com/bs3/material-dashboard-pro/examples/dashboard.html)
-+ [Material Dashboard Free Html](http://demos.creative-tim.com/material-dashboard/examples/dashboard.html)
-+ [Material Dashboard PRO Angular](https://md-pro-angular.creative-tim.com/dashboard)
-+ [Material Dashboard Free Angular](http://md-angular2.creative-tim.com/dashboard)
+* [Live Preview](https://timcreative.github.io/material-dashboard-pro-react/)
+* [Material Dashboard Free React]((https://creativetimofficial.github.io/material-dashboard-react/)
+* [Material Dashboard PRO BS4 Html](https://demos.creative-tim.com/material-dashboard-pro/examples/dashboard.html)
+* [Material Dashboard PRO BS3 Html](http://demos.creative-tim.com/bs3/material-dashboard-pro/examples/dashboard.html)
+* [Material Dashboard Free Html](http://demos.creative-tim.com/material-dashboard/examples/dashboard.html)
+* [Material Dashboard PRO Angular](https://md-pro-angular.creative-tim.com/dashboard)
+* [Material Dashboard Free Angular](http://md-angular2.creative-tim.com/dashboard)
 
 ## Quick Start:
 
 Quick start options:
 
-+ [Download from Creative Tim](https://www.creative-tim.com/product/material-dashboard-pro-react).
+* [Download from Creative Tim](https://www.creative-tim.com/product/material-dashboard-pro-react).
 
 Other Products:
 
-+ [Download HTML PRO BS4 Version](https://www.creative-tim.com/product/material-dashboard-pro).
-+ [Download HTML PRO BS3 Version](https://www.creative-tim.com/product/material-dashboard-pro-bs3).
-+ [Download Angular PRO Version](https://www.creative-tim.com/product/material-dashboard-pro-angular2).
-+ [Download React Free Version](https://www.creative-tim.com/product/material-dashboard-react).
-+ [Download HTML Free Version](https://www.creative-tim.com/product/material-dashboard).
-+ [Download Angular Free Version](https://www.creative-tim.com/product/material-dashboard-angular2).
+* [Download HTML PRO BS4 Version](https://www.creative-tim.com/product/material-dashboard-pro).
+* [Download HTML PRO BS3 Version](https://www.creative-tim.com/product/material-dashboard-pro-bs3).
+* [Download Angular PRO Version](https://www.creative-tim.com/product/material-dashboard-pro-angular2).
+* [Download React Free Version](https://www.creative-tim.com/product/material-dashboard-react).
+* [Download HTML Free Version](https://www.creative-tim.com/product/material-dashboard).
+* [Download Angular Free Version](https://www.creative-tim.com/product/material-dashboard-angular2).
 
 ## Terminal Commands
 
 1. Install NodeJs from [NodeJs Official Page](https://nodejs.org/en).
 2. Open Terminal
 3. Go to your file project
-4. Run in terminal: ```npm install```
-5. Then: ```npm start```
+4. Run in terminal: `npm install`
+5. Then: `npm start`
 6. Navigate to `http://localhost:3000/`
 7. (optional) Run in terminal `npm i -g cross-env`
 
@@ -219,7 +221,7 @@ material-dashboard-pro-react
         ├── Tables
         │   ├── DataTables.jsx
         │   ├── ExtendedTables.jsx
-        │   └── RegularTables.jsx
+        │   └── ReactTable.jsx
         └── Widgets
             └── Widgets.jsx
 ```
@@ -246,6 +248,5 @@ Google+: <https://plus.google.com/+CreativetimPage>
 
 Instagram: <https://instagram.com/creativetimofficial>
 
-[CHANGELOG]: ./CHANGELOG.md
-
+[changelog]: ./CHANGELOG.md
 [version-badge]: https://img.shields.io/badge/version-1.1.0-blue.svg

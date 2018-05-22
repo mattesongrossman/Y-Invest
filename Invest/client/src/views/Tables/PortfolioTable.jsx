@@ -29,7 +29,7 @@ import extendedTablesStyle from "assets/jss/material-dashboard-pro-react/views/e
 import api from "../../Api"
 import Auth from "../../modules/Auth"
 
-class ExtendedTables extends React.Component {
+class PortfolioTable extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -51,7 +51,7 @@ class ExtendedTables extends React.Component {
 
   handleDestroy(evt) {
     api.destroyInvestment(evt)
-    console.log("test")
+    // console.log("test")
     api.getPortfolios().then(portfolio => {
       this.setState({
         portfolio: portfolio.investments,
@@ -88,7 +88,7 @@ class ExtendedTables extends React.Component {
                   const nPrice = Number(prop.price)
                   const nQuant = Number(prop.quantity)
                   const value = nPrice * nQuant
-                  console.log("const val", value)
+                  // console.log("const val", value)
                   return {
                     id: key,
                     security: prop.security,
@@ -164,4 +164,4 @@ class ExtendedTables extends React.Component {
   }
 }
 
-export default withStyles(extendedTablesStyle)(ExtendedTables)
+export default withStyles(extendedTablesStyle)(PortfolioTable)

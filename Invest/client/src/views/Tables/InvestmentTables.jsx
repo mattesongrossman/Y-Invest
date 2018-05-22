@@ -7,7 +7,7 @@ import withStyles from "material-ui/styles/withStyles"
 
 import modalStyle from "assets/jss/material-dashboard-pro-react/modalStyle.jsx"
 
-class ReactTables extends React.Component {
+class InvestmentTables extends React.Component {
   render() {
     return (
       <div>
@@ -18,4 +18,4 @@ class ReactTables extends React.Component {
   }
 }
 
-export default withStyles(modalStyle)(ReactTables)
+export default withStyles(modalStyle)(InvestmentTables)
