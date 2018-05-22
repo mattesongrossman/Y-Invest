@@ -178,6 +178,7 @@ class HeaderLinks extends React.Component {
           </Popper>
         </Manager> */}
         <IconButton
+          style={{ color: "green" }}
           color="inherit"
           aria-label="Person"
           className={rtlActive ? classes.buttonLinkRTL : classes.buttonLink}
@@ -196,6 +197,7 @@ class HeaderLinks extends React.Component {
           </Hidden>
         </IconButton>
         <IconButton
+          style={{ color: "red" }}
           color="inherit"
           aria-label="Person"
           className={rtlActive ? classes.buttonLinkRTL : classes.buttonLink}
