@@ -2,25 +2,20 @@ import React from "react"
 import { Redirect } from "react-router-dom"
 
 import ReactTable from "react-table"
+
 // material-ui components
 import withStyles from "material-ui/styles/withStyles"
-// import Checkbox from "material-ui/Checkbox"
 
 // material-ui icons
 import Assignment from "@material-ui/icons/Assignment"
-// import Person from "@material-ui/icons/Person"
 import Edit from "@material-ui/icons/Edit"
 import Close from "@material-ui/icons/Close"
-// import Check from "@material-ui/icons/Check"
-// import Remove from "@material-ui/icons/Remove"
 import Add from "@material-ui/icons/Add"
-// import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight"
 
 // core components
 import GridContainer from "components/Grid/GridContainer.jsx"
 import ItemGrid from "components/Grid/ItemGrid.jsx"
 import IconCard from "components/Cards/IconCard.jsx"
-// import Table from "components/Table/Table.jsx"
 import Button from "components/CustomButtons/Button.jsx"
 import IconButton from "components/CustomButtons/IconButton.jsx"
 
@@ -51,7 +46,6 @@ class PortfolioTable extends React.Component {
 
   handleDestroy(evt) {
     api.destroyInvestment(evt)
-    // console.log("test")
     api.getPortfolios().then(portfolio => {
       this.setState({
         portfolio: portfolio.investments,
@@ -62,9 +56,6 @@ class PortfolioTable extends React.Component {
 
   render() {
     const { classes } = this.props
-    // const { portfolio } = this.state
-    // console.log(portfolio)
-    // console.log("Auth:?" + Auth.isUserAuthenticated())
 
     return this.state.auth ? (
       <GridContainer>
@@ -82,13 +73,9 @@ class PortfolioTable extends React.Component {
             content={
               <ReactTable
                 data={this.state.portfolio.map((prop, key) => {
-                  // console.log(
-                  //   prop.security + " - " + prop.quantity * prop.price
-                  // )
                   const nPrice = Number(prop.price)
                   const nQuant = Number(prop.quantity)
                   const value = nPrice * nQuant
-                  // console.log("const val", value)
                   return {
                     id: key,
                     security: prop.security,
@@ -101,7 +88,6 @@ class PortfolioTable extends React.Component {
                     actions: (
                       <div className="actions">
                         {/* use this button to add a like kind of action */}
-
                         <IconButton
                           onClick={() => {
                             console.log(prop.id)

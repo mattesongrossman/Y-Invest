@@ -2,7 +2,7 @@ import Dashboard from "views/Dashboard/Dashboard.jsx"
 import PortfolioTable from "views/Tables/PortfolioTable.jsx"
 import InvestmentTables from "views/Tables/InvestmentTables.jsx"
 import Charts from "views/Charts/Charts.jsx"
-import UserProfile from "views/Pages/UserProfile.jsx"
+// import UserProfile from "views/Pages/UserProfile.jsx"
 
 import pagesRoutes from "./pages.jsx"
 
