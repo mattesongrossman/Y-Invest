@@ -14,7 +14,7 @@ class UsersController < ApiController
 
   private
   def user_params
-    params.require(:user).permit(:username, :email, :name).merge(:password => :password)
+    params.require(:user).permit(:username, :password ,:email, :name)
   end
 
 end

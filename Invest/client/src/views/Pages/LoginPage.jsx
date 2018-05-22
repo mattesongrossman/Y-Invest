@@ -57,7 +57,7 @@ class LoginPage extends React.Component {
     })
       .then(res => res.json())
       .then(res => {
-        console.log(res)
+        console.log(res.token)
         if (res.token) {
           Auth.authenticateToken(res.token)
           this.setState({

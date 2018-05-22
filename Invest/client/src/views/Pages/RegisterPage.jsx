@@ -35,8 +35,8 @@ class RegisterPage extends React.Component {
     this.state = {
       createdUser: false,
       username: "",
-      email: "",
       password: "",
+      email: "",
       name: ""
     }
     this.handleChange = this.handleChange.bind(this)
@@ -58,10 +58,12 @@ class RegisterPage extends React.Component {
     const { email, password, username, name } = this.state
     console.log("test")
     const body = {
-      username: username,
-      password: password,
-      email: email,
-      name: name
+      user: {
+        username: username,
+        password: password,
+        email: email,
+        name: name
+      }
     }
     api.createUser(body).then(response => {
       console.log(response)
@@ -109,24 +111,6 @@ class RegisterPage extends React.Component {
                           }}
                           inputProps={{
                             onChange: handleChange,
-                            name: "name",
-                            startAdornment: (
-                              <InputAdornment
-                                position="start"
-                                className={classes.inputAdornment}>
-                                <Face className={classes.inputAdornmentIcon} />
-                              </InputAdornment>
-                            ),
-                            placeholder: "Name..."
-                          }}
-                        />
-                        <CustomInput
-                          formControlProps={{
-                            fullWidth: true,
-                            className: classes.customFormControlClasses
-                          }}
-                          inputProps={{
-                            onChange: handleChange,
                             name: "username",
                             startAdornment: (
                               <InputAdornment
@@ -136,6 +120,27 @@ class RegisterPage extends React.Component {
                               </InputAdornment>
                             ),
                             placeholder: "Username..."
+                          }}
+                        />
+                        <CustomInput
+                          formControlProps={{
+                            fullWidth: true,
+                            className: classes.customFormControlClasses
+                          }}
+                          inputProps={{
+                            // type: "password",
+                            onChange: handleChange,
+                            name: "password",
+                            startAdornment: (
+                              <InputAdornment
+                                position="start"
+                                className={classes.inputAdornment}>
+                                <LockOutline
+                                  className={classes.inputAdornmentIcon}
+                                />
+                              </InputAdornment>
+                            ),
+                            placeholder: "Password..."
                           }}
                         />
                         <CustomInput
@@ -162,19 +167,16 @@ class RegisterPage extends React.Component {
                             className: classes.customFormControlClasses
                           }}
                           inputProps={{
-                            // type: "password",
                             onChange: handleChange,
-                            name: "password",
+                            name: "name",
                             startAdornment: (
                               <InputAdornment
                                 position="start"
                                 className={classes.inputAdornment}>
-                                <LockOutline
-                                  className={classes.inputAdornmentIcon}
-                                />
+                                <Face className={classes.inputAdornmentIcon} />
                               </InputAdornment>
                             ),
-                            placeholder: "Password..."
+                            placeholder: "Name..."
                           }}
                         />
                         <div className={classes.center}>
