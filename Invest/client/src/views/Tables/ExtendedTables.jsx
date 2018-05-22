@@ -64,7 +64,7 @@ class ExtendedTables extends React.Component {
     const { classes } = this.props
     // const { portfolio } = this.state
     // console.log(portfolio)
-    console.log("Auth:?" + Auth.isUserAuthenticated())
+    // console.log("Auth:?" + Auth.isUserAuthenticated())
 
     return this.state.auth ? (
       <GridContainer>
@@ -87,9 +87,6 @@ class ExtendedTables extends React.Component {
                   // )
                   const nPrice = Number(prop.price)
                   const nQuant = Number(prop.quantity)
-                  console.log(
-                    "price: " + typeof nPrice + " quant: " + typeof nQuant
-                  )
                   const value = nPrice * nQuant
                   console.log("const val", value)
                   return {

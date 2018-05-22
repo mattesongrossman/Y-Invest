@@ -1,6 +1,7 @@
 import React from "react"
 // react component for creating dynamic tables
 import ReactTable from "react-table"
+import PropTypes from "prop-types"
 
 // @material-ui/icons
 import PlaylistAdd from "@material-ui/icons/PlaylistAdd"
@@ -22,6 +23,13 @@ import Dialog, {
   DialogContentText,
   DialogTitle
 } from "material-ui/Dialog"
+
+import CustomInput from "components/CustomInput/CustomInput.jsx"
+import Search from "@material-ui/icons/Search"
+import SearchButton from "components/CustomButtons/IconButton.jsx"
+
+import withStyles from "material-ui/styles/withStyles"
+import headerLinksStyle from "assets/jss/material-dashboard-pro-react/components/headerLinksStyle"
 
 class StockTables extends React.Component {
   constructor(props) {
@@ -109,6 +117,9 @@ class StockTables extends React.Component {
       return <Redirect to="/portfolio" />
     }
     // let { stock } = this.state
+    const { classes } = this.props
+    // const { open } = this.state
+    const searchButton = classes.top + " " + classes.searchButton
     return (
       <GridContainer>
         <ItemGrid xs={12}>
@@ -116,176 +127,198 @@ class StockTables extends React.Component {
             icon={ShowChart}
             title="StockTable"
             content={
-              <ReactTable
-                data={this.state.stock.map((prop, key) => {
-                  return {
-                    id: key,
-                    symbol: prop[0],
-                    name: prop[1],
-                    price: `$ ` + prop[11].toFixed(2),
-                    percent_change_24h: (Number(prop[23]) * 100).toLocaleString(
-                      {
+              <div>
+                <CustomInput
+                  formControlProps={{
+                    className: classes.top + " " + classes.search
+                  }}
+                  inputProps={{
+                    placeholder: "Search by Company",
+                    inputProps: {
+                      "aria-label": "Search",
+                      className: classes.searchInput
+                    }
+                  }}
+                />
+                <SearchButton
+                  color="white"
+                  aria-label="edit"
+                  customClass={searchButton}>
+                  <Search className={classes.searchIcon} />
+                </SearchButton>
+                <ReactTable
+                  data={this.state.stock.map((prop, key) => {
+                    return {
+                      id: key,
+                      symbol: prop[0],
+                      name: prop[1],
+                      price: `$ ` + prop[11].toFixed(2),
+                      percent_change_24h: (
+                        Number(prop[23]) * 100
+                      ).toLocaleString({
                         style: "percent"
-                      }
-                    ),
-                    YTD_Change: (prop[35] * 100).toLocaleString({
-                      style: "percent"
-                    }),
-                    market_cap: Number(prop[31]).toLocaleString(),
-                    action: (
-                      <div className="actions">
-                        <Button
-                          onClick={this.handleOpen}
-                          variant="raised"
-                          color="primary">
-                          <PlaylistAdd />
-                        </Button>
-                        <Dialog
-                          open={this.state.open}
-                          style={{
-                            backgroundColor: "white"
-                          }}
-                          onClose={this.handleClose}>
-                          <DialogTitle>Add:</DialogTitle>
-                          <DialogContent>
-                            <DialogContentText>
-                              Add Investment
-                            </DialogContentText>
-                            <form id="addItem" onSubmit={this.addPortfolioItem}>
-                              <TextField
-                                onChange={this.handleChange}
-                                autoFocus
-                                name="security"
-                                id="investment"
-                                label="Investment Name"
-                                // value=""
-                                type="text"
-                                fullWidth
-                              />
-                              <TextField
-                                onChange={this.handleChange}
-                                autoFocus
-                                name="quantity"
-                                id="quantity"
-                                label="Quantity"
-                                type="number"
-                              />
-                              <br />
-                              <TextField
-                                onChange={this.handleChange}
-                                name="price"
-                                autoFocus
-                                id="price"
-                                label="Price"
-                                type="number"
-                              />
-                              <br />
-                              <br />
-                              <TextField
-                                onChange={this.handleChange}
-                                name="purchase_date"
-                                autoFocus
-                                id="date"
-                                type="date"
-                              />
-                            </form>
-                          </DialogContent>
-                          <DialogActions>
-                            <Button
-                              onClick={this.handleClose}
-                              variant="raised"
-                              color="secondary">
-                              Cancel
-                            </Button>
-                            <Button
-                              type="submit"
-                              variant="raised"
-                              color="primary"
-                              form="addItem">
-                              Submit
-                            </Button>
-                          </DialogActions>
-                        </Dialog>
-                      </div>
-                    )
-                  }
-                })}
-                filterable
-                columns={[
-                  {
-                    Header: "Symbol",
-                    accessor: "symbol",
-                    sortable: false,
-                    maxWidth: 100
-                  },
-                  {
-                    Header: "Name",
-                    accessor: "name",
-                    minWidth: 150
-                  },
-                  {
-                    Header: "Price",
-                    accessor: "price",
-                    filterable: false,
-                    sortable: false
-                  },
-                  {
-                    Header: "24H Change",
-                    accessor: "percent_change_24h",
-                    sortable: false,
-                    filterable: false,
-                    getProps: (state, rowInfo, column) => {
-                      if (rowInfo) {
-                        return {
-                          style: {
-                            color:
-                              rowInfo.row.percent_change_24h > 0
-                                ? "green"
-                                : "red"
+                      }),
+                      YTD_Change: (prop[35] * 100).toLocaleString({
+                        style: "percent"
+                      }),
+                      market_cap: Number(prop[31]).toLocaleString(),
+                      action: (
+                        <div className="actions">
+                          <Button
+                            onClick={this.handleOpen}
+                            variant="raised"
+                            color="primary">
+                            <PlaylistAdd />
+                          </Button>
+                          <Dialog
+                            open={this.state.open}
+                            style={{
+                              backgroundColor: "white"
+                            }}
+                            onClose={this.handleClose}>
+                            <DialogTitle>Add:</DialogTitle>
+                            <DialogContent>
+                              <DialogContentText>
+                                Add Investment
+                              </DialogContentText>
+                              <form
+                                id="addItem"
+                                onSubmit={this.addPortfolioItem}>
+                                <TextField
+                                  onChange={this.handleChange}
+                                  autoFocus
+                                  name="security"
+                                  id="investment"
+                                  label="Investment Name"
+                                  // value=""
+                                  type="text"
+                                  fullWidth
+                                />
+                                <TextField
+                                  onChange={this.handleChange}
+                                  autoFocus
+                                  name="quantity"
+                                  id="quantity"
+                                  label="Quantity"
+                                  type="number"
+                                />
+                                <br />
+                                <TextField
+                                  onChange={this.handleChange}
+                                  name="price"
+                                  autoFocus
+                                  id="price"
+                                  label="Price"
+                                  type="number"
+                                />
+                                <br />
+                                <br />
+                                <TextField
+                                  onChange={this.handleChange}
+                                  name="purchase_date"
+                                  autoFocus
+                                  id="date"
+                                  type="date"
+                                />
+                              </form>
+                            </DialogContent>
+                            <DialogActions>
+                              <Button
+                                onClick={this.handleClose}
+                                variant="raised"
+                                color="secondary">
+                                Cancel
+                              </Button>
+                              <Button
+                                type="submit"
+                                variant="raised"
+                                color="primary"
+                                form="addItem">
+                                Submit
+                              </Button>
+                            </DialogActions>
+                          </Dialog>
+                        </div>
+                      )
+                    }
+                  })}
+                  filterable
+                  columns={[
+                    {
+                      Header: "Symbol",
+                      accessor: "symbol",
+                      sortable: false,
+                      maxWidth: 100
+                    },
+                    {
+                      Header: "Name",
+                      accessor: "name",
+                      minWidth: 150
+                    },
+                    {
+                      Header: "Price",
+                      accessor: "price",
+                      filterable: false,
+                      sortable: false
+                    },
+                    {
+                      Header: "24H Change",
+                      accessor: "percent_change_24h",
+                      sortable: false,
+                      filterable: false,
+                      getProps: (state, rowInfo, column) => {
+                        if (rowInfo) {
+                          return {
+                            style: {
+                              color:
+                                rowInfo.row.percent_change_24h > 0
+                                  ? "green"
+                                  : "red"
+                            }
                           }
                         }
+                        return {}
                       }
-                      return {}
-                    }
-                  },
-                  {
-                    Header: "YTD Change",
-                    accessor: "YTD_Change",
-                    filterable: false,
-                    sortable: false,
-                    getProps: (state, rowInfo, column) => {
-                      if (rowInfo) {
-                        return {
-                          style: {
-                            color:
-                              rowInfo.row.percent_change_24h > 0
-                                ? "green"
-                                : "red"
+                    },
+                    {
+                      Header: "YTD Change",
+                      accessor: "YTD_Change",
+                      filterable: false,
+                      sortable: false,
+                      getProps: (state, rowInfo, column) => {
+                        if (rowInfo) {
+                          return {
+                            style: {
+                              color:
+                                rowInfo.row.percent_change_24h > 0
+                                  ? "green"
+                                  : "red"
+                            }
                           }
                         }
+                        return {}
                       }
-                      return {}
+                    },
+                    {
+                      Header: "Market Cap",
+                      accessor: "market_cap",
+                      // sortable: false,
+                      filterable: false
+                    },
+                    {
+                      Header: "Actions",
+                      accessor: "action",
+                      sortable: false,
+                      filterable: false,
+                      maxWidth: 100
                     }
-                  },
-                  {
-                    Header: "Market Cap",
-                    accessor: "market_cap",
-                    // sortable: false,
-                    filterable: false
-                  },
-                  {
-                    Header: "Actions",
-                    accessor: "action",
-                    sortable: false,
-                    filterable: false,
-                    maxWidth: 100
-                  }
-                ]}
-                defaultPageSize={10}
-                showPaginationTop
-                showPaginationBottom={false}
-                className="-striped -highlight"
-              />
+                  ]}
+                  defaultPageSize={10}
+                  showPaginationTop
+                  showPaginationBottom={false}
+                  className="-striped -highlight"
+                />
+              </div>
             }
           />
         </ItemGrid>
@@ -294,4 +327,8 @@ class StockTables extends React.Component {
   }
 }
 
-export default StockTables
+StockTables.propTypes = {
+  classes: PropTypes.object.isRequired
+}
+
+export default withStyles(headerLinksStyle)(StockTables)

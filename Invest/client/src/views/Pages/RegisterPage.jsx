@@ -83,12 +83,8 @@ class RegisterPage extends React.Component {
 
     return (
       <div className={classes.container}>
-        <GridContainer>
-          <ItemGrid
-            xs={12}
-            sm={12}
-            md={10}
-            style={{ maxWidth: "100%", alignItems: "center" }}>
+        <GridContainer justify="center">
+          <ItemGrid xs={12} sm={12} md={10}>
             <RegularCard
               cardTitle="Register"
               titleAlign="center"
@@ -96,12 +92,8 @@ class RegisterPage extends React.Component {
               customCardTitleClasses={classes.cardTitle}
               customCardClasses={classes.cardClasses}
               content={
-                <GridContainer
-                  style={{
-                    flexFlow: "wrap",
-                    justifyContent: "center"
-                  }}>
-                  <ItemGrid xs={12} sm={8} md={5}>
+                <GridContainer justify="center">
+                  <ItemGrid xs={12} sm={12} md={5}>
                     <div
                       style={{
                         flexFlow: "wrap",
