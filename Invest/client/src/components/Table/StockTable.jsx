@@ -31,6 +31,8 @@ import SearchButton from "components/CustomButtons/IconButton.jsx"
 import withStyles from "material-ui/styles/withStyles"
 import headerLinksStyle from "assets/jss/material-dashboard-pro-react/components/headerLinksStyle"
 
+// import TableModal from "./TableModal.js"
+
 class StockTables extends React.Component {
   constructor(props) {
     super(props)
@@ -165,7 +167,12 @@ class StockTables extends React.Component {
                       action: (
                         <div className="actions">
                           <Button
-                            onClick={this.handleOpen}
+                            onClick={() => {
+                              let obj = this.state.stock.find(
+                                o => o.symbol === prop.symbol
+                              )
+                              this.handleOpen(obj)
+                            }}
                             variant="raised"
                             color="primary">
                             <PlaylistAdd />
@@ -187,10 +194,10 @@ class StockTables extends React.Component {
                                 <TextField
                                   onChange={this.handleChange}
                                   autoFocus
+                                  value={this.state.security}
                                   name="security"
                                   id="investment"
                                   label="Investment Name"
-                                  // value=""
                                   type="text"
                                   fullWidth
                                 />
@@ -198,6 +205,7 @@ class StockTables extends React.Component {
                                   onChange={this.handleChange}
                                   autoFocus
                                   name="quantity"
+                                  value={this.state.quantity}
                                   id="quantity"
                                   label="Quantity"
                                   type="number"
@@ -206,6 +214,7 @@ class StockTables extends React.Component {
                                 <TextField
                                   onChange={this.handleChange}
                                   name="price"
+                                  value={this.state.price}
                                   autoFocus
                                   id="price"
                                   label="Price"
@@ -216,6 +225,7 @@ class StockTables extends React.Component {
                                 <TextField
                                   onChange={this.handleChange}
                                   name="purchase_date"
+                                  value={this.state.purchase_date}
                                   autoFocus
                                   id="date"
                                   type="date"

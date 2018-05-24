@@ -33,7 +33,7 @@ class CryptoTable extends React.Component {
       crypto: [],
       open: false,
       security: "",
-      quantity: null,
+      quantity: 1,
       purchase_date: "2018-05-21",
       price: "",
       createdPortfolio: false,
@@ -169,7 +169,6 @@ class CryptoTable extends React.Component {
                                 name="security"
                                 id="investment"
                                 label="Investment Name"
-                                // value=""
                                 type="text"
                                 fullWidth
                               />
@@ -177,6 +176,7 @@ class CryptoTable extends React.Component {
                                 onChange={this.handleChange}
                                 autoFocus
                                 name="quantity"
+                                value={this.state.quantity}
                                 id="quantity"
                                 label="Quantity"
                                 type="number"
