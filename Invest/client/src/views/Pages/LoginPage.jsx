@@ -91,7 +91,7 @@ class LoginPage extends React.Component {
 
     return this.state.auth ? (
       (setTimeout(function() {
-        alert("Logged in")
+        // alert("Logged in")
       }, 500),
       <Redirect to="/dashboard" />)
     ) : (

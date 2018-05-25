@@ -25,7 +25,7 @@ class Logout extends React.Component {
           auth: Auth.isUserAuthenticated()
         })
       }),
-      <Redirect to="/dashboard" />)
+      window.location.reload())
     ) : (
       <Redirect to="/pages/login" />
     )

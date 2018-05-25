@@ -40,7 +40,7 @@ class StockTables extends React.Component {
       stock: [],
       open: false,
       security: "",
-      quantity: null,
+      quantity: "",
       purchase_date: "",
       price: "",
       createdPortfolio: false,
@@ -48,6 +48,7 @@ class StockTables extends React.Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.addPortfolioItem = this.addPortfolioItem.bind(this)
+    this.stockRefresh = this.stockRefresh.bind(this)
   }
   handleOpen = () => {
     this.setState({ open: true })
@@ -57,6 +58,27 @@ class StockTables extends React.Component {
   }
 
   componentDidMount() {
+    // var intervalId = setInterval(this.stockRefresh, 30000)
+    api.getStocks().then(stock => {
+      let stockData = Object.values(stock)
+      let stockArray = stockData.map(function(obj) {
+        return Object.keys(obj).map(function(key) {
+          return obj[key]
+        })
+      })
+      let key = stockArray.map((prop, key) => {
+        return key
+      })
+      this.setState({
+        stock: stockArray,
+        stockObj: stockData,
+        key: key
+      })
+    })
+  }
+
+  stockRefresh() {
+    console.log("stock refresh")
     api.getStocks().then(stock => {
       let stockData = Object.values(stock)
       let stockArray = stockData.map(function(obj) {
@@ -119,7 +141,7 @@ class StockTables extends React.Component {
       return <Redirect to="/portfolio" />
     }
     let { stock } = this.state
-    console.log(stock)
+    // console.log(stock)
     const { classes } = this.props
     // const { open } = this.state
     const searchButton = classes.top + " " + classes.searchButton
@@ -170,6 +192,7 @@ class StockTables extends React.Component {
                       YTD_Change: (prop[0].ytdChange * 100).toLocaleString({
                         style: "percent"
                       }),
+                      sector: prop[0].sector,
                       market_cap: prop[0].marketCap.toLocaleString(),
                       action: (
                         <div className="actions">
@@ -323,6 +346,12 @@ class StockTables extends React.Component {
                         }
                         return {}
                       }
+                    },
+                    {
+                      Header: "Sector",
+                      accessor: "sector",
+                      // sortable: false,
+                      filterable: false
                     },
                     {
                       Header: "Market Cap",

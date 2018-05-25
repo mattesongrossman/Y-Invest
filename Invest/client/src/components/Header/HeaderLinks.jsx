@@ -66,8 +66,8 @@ class HeaderLinks extends React.Component {
         <IconButton
           style={
             Auth.isUserAuthenticated() === true
-              ? { color: "#37B067" }
-              : { color: "red" }
+              ? { color: "#37B067", fontSize: "10px" }
+              : { color: "red", fontSize: "10px" }
           }
           // color="inherit"
           aria-label="Person"
@@ -79,6 +79,7 @@ class HeaderLinks extends React.Component {
           <Hidden mdUp>
             <p className={classes.linkText}>Profile</p>
           </Hidden>
+          {Auth.isUserAuthenticated() === true ? "Logged In" : "Not Logged In"}
         </IconButton>
         <IconButton
           onClick={() => {

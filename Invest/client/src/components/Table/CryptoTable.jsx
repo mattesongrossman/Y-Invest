@@ -41,6 +41,7 @@ class CryptoTable extends React.Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.addPortfolioItem = this.addPortfolioItem.bind(this)
+    this.cryptoRefresh = this.cryptoRefresh.bind(this)
   }
 
   handleOpen = evt => {
@@ -56,6 +57,27 @@ class CryptoTable extends React.Component {
   }
 
   componentDidMount() {
+    // var intervalId = setInterval(this.cryptoRefresh, 30000)
+    api.getCrypto().then(crypto => {
+      let cryptoData = Object.values(crypto)
+      let cryptoArray = cryptoData.map(function(obj) {
+        return Object.keys(obj).map(function(key) {
+          return obj[key]
+        })
+      })
+      let key = cryptoArray.map((prop, key) => {
+        return key
+      })
+      this.setState({
+        crypto: crypto,
+        cryptoObj: cryptoData,
+        key: key
+      })
+    })
+  }
+
+  cryptoRefresh() {
+    console.log("crypto refresh")
     api.getCrypto().then(crypto => {
       let cryptoData = Object.values(crypto)
       let cryptoArray = cryptoData.map(function(obj) {
@@ -119,8 +141,18 @@ class CryptoTable extends React.Component {
                     symbol: prop.symbol,
                     name: prop.name,
                     price: `$ ` + prop.price_usd,
+                    percent_change_1h: Number(
+                      prop.percent_change_1h
+                    ).toLocaleString({
+                      style: "percent"
+                    }),
                     percent_change_24h: Number(
                       prop.percent_change_24h
+                    ).toLocaleString({
+                      style: "percent"
+                    }),
+                    percent_change_7d: Number(
+                      prop.percent_change_7d
                     ).toLocaleString({
                       style: "percent"
                     }),
@@ -240,6 +272,24 @@ class CryptoTable extends React.Component {
                     filterable: false
                   },
                   {
+                    Header: "1H Change",
+                    accessor: "percent_change_1h",
+                    filterable: false,
+                    getProps: (state, rowInfo, column) => {
+                      if (rowInfo) {
+                        return {
+                          style: {
+                            color:
+                              rowInfo.row.percent_change_1h > 0
+                                ? "green"
+                                : "red"
+                          }
+                        }
+                      }
+                      return {}
+                    }
+                  },
+                  {
                     Header: "24H Change",
                     accessor: "percent_change_24h",
                     filterable: false,
@@ -249,6 +299,24 @@ class CryptoTable extends React.Component {
                           style: {
                             color:
                               rowInfo.row.percent_change_24h > 0
+                                ? "green"
+                                : "red"
+                          }
+                        }
+                      }
+                      return {}
+                    }
+                  },
+                  {
+                    Header: "7 Day Change",
+                    accessor: "percent_change_7d",
+                    filterable: false,
+                    getProps: (state, rowInfo, column) => {
+                      if (rowInfo) {
+                        return {
+                          style: {
+                            color:
+                              rowInfo.row.percent_change_7d > 0
                                 ? "green"
                                 : "red"
                           }
