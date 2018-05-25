@@ -2,26 +2,26 @@
 // // // PortfolioTable view styles
 // #############################
 
-import buttonGroupStyle from "assets/jss/material-dashboard-pro-react/buttonGroupStyle.jsx";
-import { primaryColor } from "assets/jss/material-dashboard-pro-react.jsx";
+import buttonGroupStyle from "assets/jss/material-dashboard-pro-react/buttonGroupStyle.jsx"
+import { primaryColor } from "assets/jss/material-dashboard-pro-react.jsx"
 
 const PortfolioTableStyle = {
   right: {
     textAlign: "right"
   },
-  center: {
-    textAlign: "center"
+  left: {
+    textAlign: "left"
   },
   description: {
     maxWidth: "150px"
   },
   actionButton: {
-    margin: "0 0 0 5px",
+    margin: "0 0 0 -9px",
     padding: "5px"
   },
   icon: {
     verticalAlign: "middle",
-    width: "17px",
+    width: "15px",
     height: "17px",
     top: "-1px",
     position: "relative"
@@ -83,7 +83,7 @@ const PortfolioTableStyle = {
   positionAbsolute: {
     position: "absolute",
     right: "0",
-    top: "0",
+    top: "0"
   },
   customFont: {
     fontSize: "16px !important"
@@ -93,6 +93,6 @@ const PortfolioTableStyle = {
     height: "auto",
     minWidth: "auto"
   }
-};
+}
 
-export default PortfolioTableStyle;
+export default PortfolioTableStyle

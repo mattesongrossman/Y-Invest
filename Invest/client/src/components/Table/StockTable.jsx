@@ -118,7 +118,8 @@ class StockTables extends React.Component {
     if (this.state.redirect) {
       return <Redirect to="/portfolio" />
     }
-    // let { stock } = this.state
+    let { stock } = this.state
+    console.log(stock)
     const { classes } = this.props
     // const { open } = this.state
     const searchButton = classes.top + " " + classes.searchButton
@@ -150,20 +151,24 @@ class StockTables extends React.Component {
                 </SearchButton>
                 <ReactTable
                   data={this.state.stock.map((prop, key) => {
+                    // console.log(prop[key])
                     return {
                       id: key,
-                      symbol: prop[0],
-                      name: prop[1],
-                      price: `$ ` + prop[11].toFixed(2),
+                      symbol: prop[0].symbol,
+                      name: prop[0].companyName,
+                      price:
+                        prop[0].latestPrice !== null
+                          ? `$ ` + prop[0].latestPrice.toFixed(2)
+                          : "0",
                       percent_change_24h: (
-                        Number(prop[23]) * 100
+                        Number(prop[0].changePercent) * 100
                       ).toLocaleString({
                         style: "percent"
                       }),
-                      YTD_Change: (prop[35] * 100).toLocaleString({
+                      YTD_Change: (prop[0].ytdChange * 100).toLocaleString({
                         style: "percent"
                       }),
-                      market_cap: Number(prop[31]).toLocaleString(),
+                      market_cap: prop[0].marketCap.toLocaleString(),
                       action: (
                         <div className="actions">
                           <Button

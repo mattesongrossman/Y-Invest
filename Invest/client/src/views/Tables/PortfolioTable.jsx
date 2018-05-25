@@ -23,7 +23,7 @@ import api from "../../Api"
 import Auth from "../../modules/Auth"
 
 import PortfolioTableModal from "components/Table/PortfolioTableModal.jsx"
-import RegularTableModal from "components/Table/RegularTableModal.jsx"
+import EditTableModal from "components/Table/EditTableModal.jsx"
 
 class PortfolioTable extends React.Component {
   constructor(props) {
@@ -34,9 +34,15 @@ class PortfolioTable extends React.Component {
       portfolioDelete: [],
       portfolioLoaded: false,
       rowDelete: false,
-      open: false
+      open: false,
+      security: "",
+      quantity: "",
+      purchase_date: "",
+      price: "",
+      id: ""
     }
-    // this.handleToggle = this.handleToggle.bind(this)
+    this.handleClose = this.handleClose.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount() {
@@ -48,11 +54,23 @@ class PortfolioTable extends React.Component {
     })
   }
 
+  //handles input change on TextField
+  handleChange(evt) {
+    let val = evt.target.value
+    let input = evt.target.name
+    this.setState({
+      [input]: val
+    })
+  }
+
   handleOpen = evt => {
     this.setState({
-      open: true
-      // security: evt.name,
-      // price: evt.price_usd
+      open: true,
+      id: evt.id.toString(),
+      security: evt.security,
+      quantity: evt.quantity,
+      purchase_date: evt.purchase_date,
+      price: evt.price
     })
   }
 
@@ -87,11 +105,12 @@ class PortfolioTable extends React.Component {
         price: prop.price,
         value: (Number(prop.price) * Number(prop.quantity)).toLocaleString(),
         actions: (
-          <div className="actions">
+          <div className="actions-left">
             {/* use this button to add a like kind of action */}
             <IconButton
               onClick={() => {
-                this.handleOpen()
+                let obj = this.state.portfolio.find(o => o.id === prop.id)
+                this.handleOpen(obj)
               }}
               color="successNoBackground"
               customClass={classes.actionButton}>
@@ -102,7 +121,7 @@ class PortfolioTable extends React.Component {
                 this.handleDestroy(prop.id, key)
               }}
               color="dangerNoBackground"
-              customClass="actions">
+              customClass={classes.actionButton}>
               <Close />
             </IconButton>
           </div>
@@ -114,7 +133,16 @@ class PortfolioTable extends React.Component {
       <GridContainer>
         <ItemGrid xs={12}>
           <PortfolioTableModal />
-          <RegularTableModal open={this.state.open} />
+          <EditTableModal
+            onChange={this.handleChange}
+            open={this.state.open}
+            close={this.handleClose}
+            id={this.state.id}
+            security={this.state.security}
+            quantity={this.state.quantity}
+            purchase_date={this.state.purchase_date}
+            price={this.state.price}
+          />
           <IconCard
             icon={Assignment}
             iconColor="blue"
@@ -148,7 +176,7 @@ class PortfolioTable extends React.Component {
                     accessor: "actions"
                   }
                 ]}
-                sortable={false}
+                sortable={true}
                 // defaultPageSize={25}
                 showPaginationTop={false}
                 showPaginationBottom={false}

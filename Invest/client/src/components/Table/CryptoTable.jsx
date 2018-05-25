@@ -74,17 +74,6 @@ class CryptoTable extends React.Component {
     })
   }
 
-  // getProps = (state, rowInfo, column) => {
-  //   if (rowInfo) {
-  //     return {
-  //       style: {
-  //         color: rowInfo.row.percent_change_24h > 0 ? "green" : "red",
-  //         fontWeight: "bold"
-  //       }
-  //     }
-  //   }
-  //   return {}
-  // }
   //handles input change on TextField
   handleChange(evt) {
     let val = evt.target.value

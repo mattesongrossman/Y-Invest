@@ -35,6 +35,18 @@ class InvestmentsController < ApiController
     Investment.destroy(params[:id])
   end
 
+  def update
+  @investment = Investment.find(params[:id])
+   if @investment.update(investment_params)
+     render json: {
+     message: 'ok',
+     investment: @investment,
+   }
+   else
+     render json: { message: "Couldn't edit investment"}
+   end
+end
+
 
   private
   def investment_params

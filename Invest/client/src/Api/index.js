@@ -59,10 +59,10 @@ const api = {
     })
   },
 
-  editInvestment(id) {
+  editInvestment(id, body) {
     return fetch(`investments/${id}`, {
       method: "PUT",
-      body: JSON.stringify(),
+      body: JSON.stringify(body),
       headers: {
         Authorization: `Token ${Auth.getToken()}`,
         token: `${Auth.getToken()}`,
@@ -96,9 +96,12 @@ const api = {
   },
   getStocks() {
     return fetch(
-      "https://api.iextrading.com/1.0/stock/market/list/iexvolume"
+      "https://api.iextrading.com/1.0/stock/market/batch?symbols=AAPL,AMZN,MSFT,GOOGL,FB,BRK.B,JPM,XOM,JNJ,BAC,WFC,V,INTC,WMT,CVX,UNH,HD,PFE,CSCO,BA,MA,VZ,T,ORCL,PG,KO,C,ABBV,MRK,DWDP,DIS,CMCSA,PEP,IBM,PM,MCD,GE,AMGN,MMM,NKE,MDT,HON,UNP,TXN,ABT,MO,UTX,SLB,BKNG,UPS,ACN,PYPL,MS,CAT,LMT,GS,LLY,GILD,AXP,QCOM,COST,BLK,BMY,USB,COP,SBUX,LOW,NEE,TWX,FOXA,DHR,KHC,FDX,CVS,OXY,CHTR,WBA,GD,RTN,BIIB,MDLZ,BK,CELG,MON,CL,GM,AGN,DUK,SPG,MET,AIG,COF,HAL,EMR,F,SO,EXC,TGT,KMI,ALL&types=quote"
     ).then(response => response.json())
   }
 }
 
 export default api
+
+// https://api.iextrading.com/1.0/stock/market/list/iexvolume
+// https://api.iextrading.com/1.0/stock/market/batch?symbols=aapl,fb&types=quote

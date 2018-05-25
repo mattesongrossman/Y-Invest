@@ -16,7 +16,7 @@ import Dialog, {
 import api from "../../Api"
 import { Redirect } from "react-router"
 
-class RegularTableModal extends React.Component {
+class EditTableModal extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -25,11 +25,11 @@ class RegularTableModal extends React.Component {
       quantity: "",
       purchase_date: "",
       price: "",
-      createdPortfolio: false,
+      editPortfolio: false,
       redirect: false
     }
     this.handleChange = this.handleChange.bind(this)
-    this.addPortfolioItem = this.addPortfolioItem.bind(this)
+    this.editInvestment = this.editInvestment.bind(this)
   }
 
   handleOpen = evt => {
@@ -53,19 +53,19 @@ class RegularTableModal extends React.Component {
     })
   }
   //creates portfolio
-  addPortfolioItem(evt) {
+  editInvestment(evt) {
     evt.preventDefault()
-    const { security, quantity, purchase_date, price } = this.state
-    console.log("test")
+    const { security, quantity, purchase_date, price, id } = this.props
+    console.log(id)
     const body = {
       security: security,
       quantity: quantity,
       price: price,
       purchase_date: purchase_date
     }
-    api.addPortfolioItem(body).then(response => {
+    api.editInvestment(id, body).then(response => {
       this.setState({
-        createdPortfolio: true
+        editPortfolio: true
       })
     })
     window.location.reload()
@@ -82,23 +82,23 @@ class RegularTableModal extends React.Component {
           style={{
             backgroundColor: "white"
           }}
-          onClose={this.handleClose}>
+          onClose={this.props.close}>
           <DialogTitle>Add:</DialogTitle>
           <DialogContent>
             <DialogContentText>Add Investment</DialogContentText>
-            <form id="addItem" onSubmit={this.addPortfolioItem}>
+            <form id="editItem" onSubmit={this.editInvestment}>
               <TextField
-                onChange={this.handleChange}
+                onChange={this.props.onChange}
                 autoFocus
                 value={this.props.security}
                 name="security"
-                id="investment"
+                id={this.props.id}
                 label="Investment Name"
                 type="text"
                 fullWidth
               />
               <TextField
-                onChange={this.handleChange}
+                onChange={this.props.onChange}
                 autoFocus
                 name="quantity"
                 value={this.props.quantity}
@@ -108,7 +108,7 @@ class RegularTableModal extends React.Component {
               />
               <br />
               <TextField
-                onChange={this.handleChange}
+                onChange={this.props.onChange}
                 name="price"
                 value={this.props.price}
                 autoFocus
@@ -119,7 +119,7 @@ class RegularTableModal extends React.Component {
               <br />
               <br />
               <TextField
-                onChange={this.handleChange}
+                onChange={this.props.onChange}
                 name="purchase_date"
                 value={this.props.purchase_date}
                 autoFocus
@@ -129,14 +129,14 @@ class RegularTableModal extends React.Component {
             </form>
           </DialogContent>
           <DialogActions>
-            <Button onClick={this.handleClose} variant="raised" color="danger">
+            <Button onClick={this.props.close} variant="raised" color="danger">
               Cancel
             </Button>
             <Button
               type="submit"
               variant="raised"
               color="success"
-              form="addItem">
+              form="editItem">
               Submit
             </Button>
           </DialogActions>
@@ -146,4 +146,4 @@ class RegularTableModal extends React.Component {
   }
 }
 
-export default withStyles(modalStyle)(RegularTableModal)
+export default withStyles(modalStyle)(EditTableModal)
