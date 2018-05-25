@@ -64,7 +64,12 @@ class Dashboard extends React.Component {
           display: "flex",
           maxWidth: "100%",
           flexDirection: "row",
-          flexWrap: "wrap"
+          flexWrap: "wrap",
+          "@media (minWidth: 8050px)": {
+            display: "inline",
+            width: "100%",
+            height: "100%"
+          }
         }}>
         {News}
       </ItemGrid>

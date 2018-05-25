@@ -29,6 +29,7 @@ const imagePriceCardStyle = {
     color: "rgba(0, 0, 0, 0.87)",
     background: "#fff",
     "@media (maxWidth: 850px)": {
+      display: "inline",
       width: "100%",
       height: "100%"
     }

@@ -102,6 +102,3 @@ const api = {
 }
 
 export default api
-
-// https://api.iextrading.com/1.0/stock/market/list/iexvolume
-// https://api.iextrading.com/1.0/stock/market/batch?symbols=aapl,fb&types=quote

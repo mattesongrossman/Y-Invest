@@ -11,9 +11,9 @@ import LockOpen from "@material-ui/icons/LockOpen"
 const pagesRoutes = [
   {
     path: "/pages/register",
-    name: "Register Page",
+    name: "Register",
     short: "Register",
-    mini: "RP",
+    mini: "$",
     icon: PersonAdd,
     component: RegisterPage
   },
@@ -21,7 +21,7 @@ const pagesRoutes = [
     path: "/pages/login",
     name: "Login",
     short: "Login",
-    mini: "LP",
+    mini: "$",
     icon: Fingerprint,
     component: LoginPage
   },
@@ -29,7 +29,7 @@ const pagesRoutes = [
     path: "/pages/logout",
     name: "Logout",
     short: "Logout",
-    mini: "LOG",
+    mini: "$",
     icon: LockOpen,
     component: Logout
   },

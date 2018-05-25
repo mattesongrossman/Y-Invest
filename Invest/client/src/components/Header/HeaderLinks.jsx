@@ -1,23 +1,25 @@
 import React from "react"
 import classNames from "classnames"
 import PropTypes from "prop-types"
+// import { Redirect } from "react-router-dom"
 
 // material-ui components
-import Logout from "views/Pages/Logout.jsx"
+// import Logout from "views/Pages/Logout.jsx"
 import withStyles from "material-ui/styles/withStyles"
 import IconButton from "material-ui/IconButton"
 import Hidden from "material-ui/Hidden"
 
 // @material-ui/icons
 import Person from "@material-ui/icons/Person"
-import Search from "@material-ui/icons/Search"
+// import Search from "@material-ui/icons/Search"
 import LockOpen from "@material-ui/icons/LockOpen"
 
 // core components
-import CustomInput from "components/CustomInput/CustomInput.jsx"
-import SearchButton from "components/CustomButtons/IconButton.jsx"
+// import CustomInput from "components/CustomInput/CustomInput.jsx"
+// import SearchButton from "components/CustomButtons/IconButton.jsx"
 
 import headerLinksStyle from "assets/jss/material-dashboard-pro-react/components/headerLinksStyle"
+import Auth from "../../modules/Auth"
 
 class HeaderLinks extends React.Component {
   state = {
@@ -31,7 +33,7 @@ class HeaderLinks extends React.Component {
   }
   render() {
     const { classes, rtlActive } = this.props
-    const searchButton = classes.top + " " + classes.searchButton
+    // const searchButton = classes.top + " " + classes.searchButton
     //+ " " +
     // classNames({
     //   [classes.searchRTL]: rtlActive
@@ -42,7 +44,7 @@ class HeaderLinks extends React.Component {
 
     return (
       <div className={wrapper}>
-        <CustomInput
+        {/* <CustomInput
           // rtlActive={rtlActive}
           formControlProps={{
             className: classes.top + " " + classes.search
@@ -60,9 +62,13 @@ class HeaderLinks extends React.Component {
           aria-label="edit"
           customClass={searchButton}>
           <Search className={classes.searchIcon} />
-        </SearchButton>
+        </SearchButton> */}
         <IconButton
-          style={{ color: "green" }}
+          style={
+            Auth.isUserAuthenticated() === true
+              ? { color: "#37B067" }
+              : { color: "red" }
+          }
           // color="inherit"
           aria-label="Person"
           className={classes.buttonLink}
@@ -75,7 +81,9 @@ class HeaderLinks extends React.Component {
           </Hidden>
         </IconButton>
         <IconButton
-          // onClick={Logout}
+          onClick={() => {
+            // ;<Redirect to="/pages/login" />
+          }}
           style={{ color: "red" }}
           // color="inherit"
           aria-label="LockOpen"
@@ -85,7 +93,7 @@ class HeaderLinks extends React.Component {
           }}>
           <LockOpen className={classes.links} />
           <Hidden mdUp>
-            <p className={classes.linkText}>Profile</p>
+            <p className={classes.linkText}>Logout</p>
           </Hidden>
         </IconButton>
       </div>

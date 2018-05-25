@@ -1,7 +1,7 @@
 import Dashboard from "views/Dashboard/Dashboard.jsx"
 import PortfolioTable from "views/Tables/PortfolioTable.jsx"
 import InvestmentTables from "views/Tables/InvestmentTables.jsx"
-import Charts from "views/Charts/Charts.jsx"
+// import Charts from "views/Charts/Charts.jsx"
 // import UserProfile from "views/Pages/UserProfile.jsx"
 
 import pagesRoutes from "./pages.jsx"
@@ -10,7 +10,7 @@ import pagesRoutes from "./pages.jsx"
 import DashboardIcon from "@material-ui/icons/Dashboard"
 import GridOn from "@material-ui/icons/GridOn"
 import Timeline from "@material-ui/icons/Timeline"
-import InsertChart from "@material-ui/icons/InsertChart"
+// import InsertChart from "@material-ui/icons/InsertChart"
 import Fingerprint from "@material-ui/icons/Fingerprint"
 
 var pages = [].concat(pagesRoutes)
@@ -25,7 +25,7 @@ var dashRoutes = [
   {
     collapse: true,
     path: "-page",
-    name: "User Actions",
+    name: "User Hub",
     state: "openPages",
     icon: Fingerprint,
     views: pages
@@ -42,12 +42,12 @@ var dashRoutes = [
     icon: GridOn,
     component: PortfolioTable
   },
-  {
-    path: "/charts",
-    name: "Charts",
-    icon: InsertChart,
-    component: Charts
-  },
+  // {
+  //   path: "/charts",
+  //   name: "Charts",
+  //   icon: InsertChart,
+  //   component: Charts
+  // },
   { redirect: true, path: "/", pathTo: "/dashboard", name: "Dashboard" }
 ]
 export default dashRoutes

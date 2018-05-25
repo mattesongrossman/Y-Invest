@@ -131,24 +131,26 @@ class StockTables extends React.Component {
             title="StockTable"
             content={
               <div>
-                <CustomInput
-                  formControlProps={{
-                    className: classes.top + " " + classes.search
-                  }}
-                  inputProps={{
-                    placeholder: "Search by Company",
-                    inputProps: {
-                      "aria-label": "Search",
-                      className: classes.searchInput
-                    }
-                  }}
-                />
-                <SearchButton
-                  color="white"
-                  aria-label="edit"
-                  customClass={searchButton}>
-                  <Search className={classes.searchIcon} />
-                </SearchButton>
+                {/* <div>
+                  <CustomInput
+                    formControlProps={{
+                      className: classes.top + " " + classes.search
+                    }}
+                    inputProps={{
+                      placeholder: "Search by Company",
+                      inputProps: {
+                        "aria-label": "Search",
+                        className: classes.searchInput
+                      }
+                    }}
+                  />
+                  <SearchButton
+                    color="white"
+                    aria-label="edit"
+                    customClass={searchButton}>
+                    <Search className={classes.searchIcon} />
+                  </SearchButton>
+                </div> */}
                 <ReactTable
                   data={this.state.stock.map((prop, key) => {
                     // console.log(prop[key])
@@ -268,7 +270,15 @@ class StockTables extends React.Component {
                     {
                       Header: "Name",
                       accessor: "name",
-                      minWidth: 150
+                      minWidth: 150,
+                      Cell: cellInfo => (
+                        <a
+                          href={`https://finance.yahoo.com/quote/${
+                            cellInfo.original.symbol
+                          }`}>
+                          {cellInfo.original.name}
+                        </a>
+                      )
                     },
                     {
                       Header: "Price",
