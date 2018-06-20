@@ -49,6 +49,7 @@ class StockTables extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.addPortfolioItem = this.addPortfolioItem.bind(this)
     this.stockRefresh = this.stockRefresh.bind(this)
+    this.changeProps = this.changeProps.bind(this)
   }
   handleOpen = () => {
     this.setState({ open: true })
@@ -58,7 +59,7 @@ class StockTables extends React.Component {
   }
 
   componentDidMount() {
-    // var intervalId = setInterval(this.stockRefresh, 30000)
+    var intervalId = setInterval(this.stockRefresh, 30000)
     api.getStocks().then(stock => {
       let stockData = Object.values(stock)
       let stockArray = stockData.map(function(obj) {
@@ -78,6 +79,7 @@ class StockTables extends React.Component {
   }
 
   stockRefresh() {
+    // var intervalId = setInterval(this.changeProps, 3000)
     console.log("stock refresh")
     api.getStocks().then(stock => {
       let stockData = Object.values(stock)
@@ -97,17 +99,32 @@ class StockTables extends React.Component {
     })
   }
 
-  getProps = (state, rowInfo, column) => {
-    if (rowInfo) {
-      return {
-        style: {
-          color: rowInfo.row.percent_change_24h > 0 ? "green" : "red",
-          fontWeight: "bold"
-        }
-      }
-    }
-    return {}
+  changeProps() {
+    console.log("hi")
+    // getProps = (state, rowInfo, column) => {
+    //   if (rowInfo) {
+    //     return {
+    //       style: {
+    //         color: rowInfo.row.percent_change_24h > 0 ? "green" : "red",
+    //         fontWeight: "bold"
+    //       }
+    //     }
+    //   }
+    //   return {}
+    // }
   }
+
+  // getProps = (state, rowInfo, column) => {
+  //   if (rowInfo) {
+  //     return {
+  //       style: {
+  //         color: rowInfo.row.percent_change_24h > 0 ? "green" : "red",
+  //         fontWeight: "bold"
+  //       }
+  //     }
+  //   }
+  //   return {}
+  // }
 
   //handles input change on TextField
   handleChange(evt) {
@@ -289,6 +306,7 @@ class StockTables extends React.Component {
                       accessor: "symbol",
                       sortable: false,
                       maxWidth: 100
+                      // style: { backgroundColor: "black" }
                     },
                     {
                       Header: "Name",
